@@ -4,6 +4,7 @@ package doom;
 class Player extends GameTile {
         private int playerMoney;
         private int playerWater;
+        private boolean alive = true;
         
         
 	//constructor
@@ -60,17 +61,24 @@ class Player extends GameTile {
             return playerMoney;
         }
         
-        //gamer-water
+        //Reduces Players water if alive. Kill Player if water=0
         public void setPlayerWater(){
-            this.playerWater -= 3;
+            if (getPlayerWater() > 0 && alive()){
+               this.playerWater -= 3;
+            }else{
+                GameOver gameOver = new GameOver();
+                gameOver.setVisible(true);
+                die();
+            }
+            
         }
         
         public int getPlayerWater(){
             return playerWater;
         }
         
-        //set atributes of this player
-        public void setAtributes(String eventIndex) {
+        //set attributes of this player
+        public void setAttributes(String eventIndex) {
             char index = eventIndex.charAt(0);
             String value = eventIndex.substring(1, eventIndex.length());
             
@@ -78,4 +86,13 @@ class Player extends GameTile {
                 case 'm': setPlayerMoney(Integer.parseInt(value));
             }
         }
+
+        public void die(){
+            this.alive = false;
+        }
+        
+        public boolean alive(){
+            return alive;
+        }
+
 }

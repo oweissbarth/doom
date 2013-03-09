@@ -59,7 +59,7 @@ class World {
 
 	//main-move-function
 	public void move (String key) {
-		int posX = this.gamer.getX();
+                int posX = this.gamer.getX();
 		int posY = this.gamer.getY();
 		if (onKeyPressed(key)) {
 			switch (key.charAt(0)) {
@@ -73,12 +73,17 @@ class World {
 					break;
 			}
                         gamer.setPlayerWater();
-                }               
-	}
+                }                   
+        }
 
 	//main-print-function
 	public void draw (Gui mainWindow){
-		Events event = new Events();
+		//Check if Player is alive
+                if (!gamer.alive()){
+                    mainWindow.dispose();
+                }
+          
+                Events event = new Events();
                 //get current position of the player
                 int x = this.gamer.getX();
 		int y = this.gamer.getY();
@@ -97,7 +102,7 @@ class World {
                 }
                
                 //set player-attributes
-                gamer.setAtributes(eventCombinedIndex);
+                gamer.setAttributes(eventCombinedIndex);
                 
                 //edit the waterBar
                 mainWindow.setWaterBar(water);
@@ -105,8 +110,7 @@ class World {
                 int money = gamer.getPlayerMoney();
                 //edit the MoneyCounter
                 mainWindow.setMoneyCounter(money);
-                
-                            
+                          
                 
                 //convert the GameField into a string
 		String sub1 = level.toString();

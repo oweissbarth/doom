@@ -296,7 +296,7 @@ public class Gui extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         char c = evt.getKeyChar();
         String s = c + "";
-        GameMain.makeNew(s);
+        GameMain.play(s);
     }//GEN-LAST:event_formKeyPressed
     /**
      * functionality of the exit-button 
