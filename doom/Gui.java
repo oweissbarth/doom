@@ -360,7 +360,7 @@ public class Gui extends javax.swing.JFrame {
     
     //function to draw a string into the mainLabel
     public void setMainLabel(String s) {
-        this.mainLabel.setText("<html><p style= \"font-family:monospace;\">"+s+"</p></html>");
+        this.mainLabel.setText("<html>"+s+"</html>");
     }
     
     //function to manage the content of the eventLabel
