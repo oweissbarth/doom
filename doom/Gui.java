@@ -359,7 +359,7 @@ public class Gui extends javax.swing.JFrame {
     
     //function to draw a string into the mainLabel
     public void setMainLabel(String s) {
-        this.mainLabel.setText("<html>"+s+"</html>");
+        this.mainLabel.setText("<html><pre>"+s+"</pre></html>");
     }
     
     //function to manage the content of the eventLabel

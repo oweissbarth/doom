@@ -96,7 +96,7 @@ class World {
                     level.tileConv(x, y);
                 }
                
-                //set player-atributes
+                //set player-attributes
                 gamer.setAtributes(eventCombinedIndex);
                 
                 //edit the waterBar
