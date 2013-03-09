@@ -4,10 +4,6 @@
  */
 package doom;
 
-/**
- *
- * @author Paul Braun
- */
 public class HelpWindow extends javax.swing.JFrame {
 
     /**

@@ -4,10 +4,6 @@
  */
 package doom;
 
-/**
- *
- * @author Paul Braun
- */
 public class Gui extends javax.swing.JFrame {
 
     /**
