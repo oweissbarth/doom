@@ -1,12 +1,12 @@
 package doom;
 
 class GameField {
-	//Definition des Arrays
+	//definition of the GameField-Array
 	private GameTile[][] field;
 	private int height;
 	private int width;
 
-	//Konstruktor des Feldes
+	//Constructor of GameField
 	public GameField(String canvas, int width, int height) {
 		
 		this.height = height;
@@ -14,13 +14,12 @@ class GameField {
 		this.field = new GameTile[height][width];
 		String s = canvas;
 
-		//Jedes Zeichen des der Leinwand in das oben definierte Array schreiben 
+		//i = lines; j = cols 
 		for (int i=0; i<height; i++){
 			for (int j=0; j<width; j++){
 			
 				char c = s.charAt((i*width)+j);
 				
-				//Fallunterscheidung und gleichzeitiges definieren der Koordinaten
 				switch (c) {
 					case '#': field[i][j] = new WallTile(i,j);
 							break;
@@ -28,10 +27,12 @@ class GameField {
 							break;
 					case '@' : field[i][j] = new DragonTile(i,j);
 							break;
-					case '+' : field[i][j] = new DoorTile(i,j);
+					case '+' : field[i][j] = new DoorTile(i,j); s = this.field[i][j].setColor(i, j, width, s);
 							break;
 					case '$' : field[i][j] = new MoneyTile(i,j);
 							break;
+                                        case 't' : field[i][j] = new DoorTrigger(i, j); s = this.field[i][j].setColor(i, j, width, s);
+                                                        break;
 					default : field[i][j] = new GameTile();
 							break;	
 				}
@@ -39,7 +40,7 @@ class GameField {
 		}
 	}
 
-	//Das Array auslesen und in ein String umwandeln
+	//convert GameFieldArray to a string
 	public String toString() {
 		String s="";
 		int size = this.height;
@@ -55,7 +56,7 @@ class GameField {
 		return s; 
 	}
 
-	//getter fuer hight und width
+	//getter-functions
 	public int getHeight (){
 		return this.height;
 	}
@@ -64,14 +65,20 @@ class GameField {
 		return this.width;
 	}
 
-	//getTileString funktion
+	//convert a GameTile into a string
 	public String getTileString(int x, int y) {
 		GameTile tile = this.field[x][y];
 		String s = tile.toString();
 		return s;
 	}
         
-        //GameTile convertieren
+        public String getTileIndex(int x, int y) {
+		GameTile tile = this.field[x][y];
+		String s = tile.getIndex();
+		return s;
+	}
+        
+        //replace a GameTile with a EmptyTile
         public void tileConv(int x, int y) {
             this.field[x][y] = new EmptyTile(x, y);
         }

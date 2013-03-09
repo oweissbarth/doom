@@ -6,14 +6,14 @@ class Player extends GameTile {
         private int playerWater;
         
         
-	//Konstruktor eines Spielers
+	//constructor
 	public Player(int x, int y) {
 		super.setXY(x,y);
                 this.playerMoney = 0;
                 this.playerWater = 1503;
 	}
 	
-	//Zeichen-Funktion eines Spielers
+	//add the player to the canvas
 	public String draw(String s, int n) {
 		int x = this.getX();
 		int y = this.getY();
@@ -25,7 +25,7 @@ class Player extends GameTile {
 		return newStr;	
 	}
 
-	//Bewegungsfunktionen
+	//movement-functions
 	public void moveLeft() {
 		int x = this.getX();
 		int y = this.getY();
@@ -51,7 +51,7 @@ class Player extends GameTile {
 	}
 
         
-        //gamer-Money
+        //gamer-money
         public void setPlayerMoney(int n){
             this.playerMoney += n;
         }
@@ -60,7 +60,7 @@ class Player extends GameTile {
             return playerMoney;
         }
         
-        //gamer-Water
+        //gamer-water
         public void setPlayerWater(){
             this.playerWater -= 3;
         }
@@ -69,16 +69,7 @@ class Player extends GameTile {
             return playerWater;
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        //set atributes of this player
         public void setAtributes(String eventIndex) {
             char index = eventIndex.charAt(0);
             String value = eventIndex.substring(1, eventIndex.length());

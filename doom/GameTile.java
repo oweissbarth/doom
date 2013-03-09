@@ -2,97 +2,146 @@ package doom;
 class GameTile {
 	private Position pos;
 	
-	//Standartausgabe von einem Tile
+	//GameTile -> string
 	public String toString() {
 		return "";	
 	}
 
-	//Set-Funktion um Koordinaten zu definieren
+	//setter-function
 	public void setXY(int x , int y) {
 		this.pos = new Position();
 		this.pos.setXY(x,y);
 	}
+        
+        public String setColor(int x, int y, int n, String s) {
+            return s;
+        }
 	
-	//Get-Funktion um X-Koordinate zu bestimmen
+	//getter-functions
 	public int getX(){
 		int x = this.pos.getX();
 		return x;
 	}
 
-	//Get-Funktion um Y-Koordinate zu bestimmen
 	public int getY(){
 		int y = this.pos.getY();
 		return y;
-	}	
+	}
+        
+        public String getIndex() {
+            return "";
+        }
 }
 
 
-//Leeres Feld
+//Empty GameTile
 class EmptyTile extends GameTile {
-		
-	//Konstruktor eines leeren Feldes	
+			
 	public EmptyTile(int x, int y) {
-		super.setXY(x,y);
+            super.setXY(x,y);
 	}	
 	
-	//Ausgabe eines leeren Feldes
 	public String toString() {
-		return super.toString() + "\u00A0";
+            return "\u00A0";
 	}
+        
+        public String getIndex() {
+            return "e";
+        }
 }
 
-//Wand-Tile
+//Wall GameTile
 class WallTile extends GameTile {
 
-	//Konstruktor eines Wand Feldes
 	public WallTile(int x, int y) {
-		super.setXY(x,y);
+            super.setXY(x,y);
 	}
 
-	//Ausgabe eines Wand Feldes
 	public String toString() {
-		return super.toString() + "#";	
+            return "#";	
 	}
+        
+        public String getIndex() {
+            return "#";
+        }
 }
 
-//Geld-Tile
+//Money GameTile
 class MoneyTile extends GameTile {
 
-	//Konstruktor eines Geld Feldes
 	public MoneyTile(int x, int y) {
-		super.setXY(x,y);
+            super.setXY(x,y);
 	}
 
-	//Ausgabe eines Geld Feldes
 	public String toString() {
-		return super.toString() + "$";	
+            return "$";	
 	}
+        
+        public String getIndex() {
+            return "$";
+        }
 }
 
-//Dragon-Tile
+//Dragon GameTile
 class DragonTile extends GameTile {
 
-	//Konstruktor eines Drachen Feldes
 	public DragonTile(int x, int y) {
-		super.setXY(x,y);
+            super.setXY(x,y);
 	}
 
-	//Ausgabe eines Drachen Feldes
 	public String toString() {
-		return super.toString() + "@";	
+            return "@";	
 	}
+        
+        public String getIndex() {
+            return "@";
+        }
 }
 
-//Door-Tile
+//Door GameTile
 class DoorTile extends GameTile {
+        
+        private char colorIndex;
 
-	//Konstruktor eines Tuer Feldes
 	public DoorTile(int x, int y) {
 		super.setXY(x,y);
 	}
+        
+        public String setColor(int x, int y, int n, String s) {
+            this.colorIndex = s.charAt((x*n)+y+2);
+            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
+            return s;
+        }
 
-	//Ausgabe eines Tuer Feldes
 	public String toString() {
-		return super.toString() + "+";	
+            return "+";	
 	}
+        
+        public String getIndex() {
+            return "+" + this.colorIndex;
+        }
+}
+
+//Door trigger
+class DoorTrigger extends GameTile {
+    
+        private char colorIndex;
+
+	public DoorTrigger(int x, int y) {
+            super.setXY(x,y);
+	}
+        
+        public String setColor(int x, int y, int n, String s) {
+            this.colorIndex = s.charAt((x*n)+y+2);
+            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
+            return s;
+        }
+
+	public String toString() {
+            return "\u00A0";	
+	}
+        
+        public String getIndex() {
+            return "t" + this.colorIndex;
+        }
 }

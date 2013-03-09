@@ -56,7 +56,9 @@ public class HelpWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * functionality of the exit-button 
+     */
     private void HelpCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpCloseActionPerformed
         setVisible(false); 
     }//GEN-LAST:event_HelpCloseActionPerformed
