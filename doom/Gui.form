@@ -56,7 +56,7 @@
                                   <Component id="ausgabeLabel" alignment="1" min="-2" pref="634" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="EventPanel" max="-2" attributes="0"/>
+                              <Component id="EventPanel" min="325" pref="325" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -204,7 +204,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="EventLabel" min="-2" pref="415" max="-2" attributes="0"/>
-                  <EmptySpace pref="96" max="32767" attributes="0"/>
+                  <EmptySpace pref="94" max="32767" attributes="0"/>
                   <Component id="healthBar" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="waterBar" min="-2" pref="40" max="-2" attributes="0"/>
