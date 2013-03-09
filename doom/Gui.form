@@ -340,10 +340,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="moneyCounter" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="moneyCounter" alignment="1" max="32767" attributes="0"/>
                       <Component id="waterBar" alignment="0" max="32767" attributes="0"/>
                       <Component id="healthBar" alignment="1" max="32767" attributes="0"/>
                       <Component id="eventLabel" alignment="1" pref="295" max="32767" attributes="0"/>
@@ -423,6 +423,8 @@
               </Border>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
       </SubComponents>
     </Container>
