@@ -195,7 +195,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(moneyCounter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(waterBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(healthBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eventLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eventLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                 .addContainerGap())
         );
         eventPanelLayout.setVerticalGroup(
@@ -203,7 +203,7 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(eventPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eventLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(moneyCounter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(healthBar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +355,7 @@ public class Gui extends javax.swing.JFrame {
     
     //function to draw a string into the mainLabel
     public void setMainLabel(String s) {
-        this.mainLabel.setText("<html><pre>"+s+"</pre></html>");
+        this.mainLabel.setText("<html><p style= \"font-family:monospace;\">"+s+"</p></html>");
     }
     
     //function to manage the content of the eventLabel
