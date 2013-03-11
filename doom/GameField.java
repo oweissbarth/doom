@@ -33,7 +33,9 @@ class GameField {
 							break;
                                         case 't' : field[i][j] = new DoorTrigger(i, j); s = this.field[i][j].setColor(i, j, width, s);
                                                         break;
-                                        default : field[i][j] = new GameTile();
+                                        case 'w' : field[i][j] = new WaterTile(i, j);
+                                                        break;
+					default : field[i][j] = new GameTile();
 							break;	
 				}
 			}		

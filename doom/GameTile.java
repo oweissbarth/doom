@@ -50,6 +50,21 @@ class EmptyTile extends GameTile {
         }
 }
 
+//Water GameTile
+class WaterTile extends GameTile {
+    public WaterTile (int x, int y) {
+        super.setXY(x, y);
+    }
+    
+    public String toString() {
+        return "w";
+    }
+    
+    public String getIndex() {
+        return "w";
+    }
+}
+
 //Wall GameTile
 class WallTile extends GameTile {
 
