@@ -180,6 +180,7 @@ public class Gui extends javax.swing.JFrame {
         healthBar.setString("Health");
         healthBar.setStringPainted(true);
 
+        moneyCounter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moneyCounter.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
         javax.swing.GroupLayout eventPanelLayout = new javax.swing.GroupLayout(eventPanel);

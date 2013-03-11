@@ -96,7 +96,7 @@ class World {
              
                 
 		//get the event-code
-		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex);
+		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory);
                 
                 //delete the event-GameTile
                 if (event.delEvent(eventIndex)) {

@@ -3,12 +3,13 @@ package doom;
 public class Events {
   
     //event-manager
-    public String eventManager (Gui window, String eventIndex) {
+    public String eventManager (Gui window, String eventIndex, Inventory inventory) {
             char c = eventIndex.charAt(0);
             
             switch (c){
                 case '$' : return "m" + moneyEvent(window);
-                case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";                   
+                case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
+                case 'w' : inventory.fillInventory("water"); return " ";
 
                 default:    window.setVisibility(false); return "e";
             }
@@ -41,6 +42,7 @@ public class Events {
         
         switch (c) {
             case '$': return true;
+            case 'w': return true;
             default : return false;
         }
     }
