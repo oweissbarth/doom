@@ -45,6 +45,9 @@ public class GameMain {
             
         }
         
+        public static void triggerItems(String s){
+            world.useItem(s, mainWindow);
+        }
 }
 
 

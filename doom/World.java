@@ -67,7 +67,7 @@ class World {
 				case 'd' : if (moveCheck(posX, posY+1)) {this.gamer.moveRight();}
 					break;
 			}
-                        gamer.setPlayerWater();                                 
+                        gamer.reducePlayerWater(3);                                 
         }
 
 	//main-print-function
@@ -122,5 +122,18 @@ class World {
                 //draw-function
                 mainWindow.setMainLabel(outString);               
 	}
+
+        public void useItem(String s, Gui mainWindow){
+            int index = (Integer.parseInt(s))-1;
+            char item = inventory.getItem(index).charAt(0);
+            
+            switch(item){
+                case 'e':   break;
+                    
+                case 'w':   inventory.useWater(gamer, mainWindow);
+                            inventory.deleteItem(index, mainWindow);
+                            break;
+            }
+        }
 }
 

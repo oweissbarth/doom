@@ -6,13 +6,19 @@ import javax.swing.ImageIcon;
 public class Inventory {
     String[] inventory;
     
-    //Constructor to creeate 
+    //Constructor to create 
     public Inventory () {
         this.inventory = new String[8];
         for (int i = 0; i<this.inventory.length; i++) {
             this.inventory[i] = "e";
         }
     }
+    
+   //Getter for Inventory Item
+    public String getItem(int i){
+        return inventory[i];
+    }
+    
     
     public void fillInventory (String object, Gui mainWindow) {
         boolean indicator = true;
@@ -25,6 +31,8 @@ public class Inventory {
         }      
     }
 
+    
+    //Sets up all the Icons for items in the inventory
     private void setInventoryIcons(Gui mainWindow){
       javax.swing.JLabel[] labels = mainWindow.getInventoryLabels();
       for(int i=0; i < labels.length; i++){
@@ -32,7 +40,9 @@ public class Inventory {
       }
     }
     
-   private Icon chooseIcon(String s){
+   
+    //Dictionary for the icon-locations
+    private Icon chooseIcon(String s){
        Icon icon = null;
        
        switch(s.charAt(0)){
@@ -46,7 +56,8 @@ public class Inventory {
    }
 
 
-   public void deleteItem(int index){
+    //Deletes an item from the inventory and rearranges the items
+    public void deleteItem(int index, Gui mainWindow){
       inventory[index] = "e";
       String[] newInventory = new String[8];
       int ni=0;
@@ -63,5 +74,17 @@ public class Inventory {
           ni++;
       }
       inventory = newInventory;
+      setInventoryIcons(mainWindow);
    }
+
+    //////////////////////////////////
+    //USE ITEMS                    //
+    /////////////////////////////////
+    
+    //use water
+    public void useWater(Player gamer, Gui mainWindow){
+        gamer.addPlayerWater(50);
+        mainWindow.setWaterBar(gamer.getPlayerWater());
+        System.out.println(inventory);
+    }
 }  

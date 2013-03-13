@@ -62,15 +62,19 @@ class Player extends GameTile {
         }
         
         //Reduces Players water if alive. Kill Player if water=0
-        public void setPlayerWater(){
+        public void reducePlayerWater(int n){
             if (getPlayerWater() > 0 && alive()){
-               this.playerWater -= 3;
+               this.playerWater -= n;
             }else{
                 GameOver gameOver = new GameOver();
                 gameOver.setVisible(true);
                 die();
             }
-            
+        }
+        
+        //add to Players water
+        public void addPlayerWater(int n){
+            this.playerWater+= n;
         }
         
         public int getPlayerWater(){
