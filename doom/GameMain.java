@@ -1,4 +1,8 @@
 package doom;
+
+import java.awt.GraphicsEnvironment;
+import java.util.Arrays;
+
 /*-----------------------------------------------------*/
 //Achsenbelegung!
 // x = Zeilen von oben nach unten
@@ -12,7 +16,17 @@ public class GameMain {
         
         //main-function
 	public static void main (String[] args) {
-                runGame();
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            String[] fontNames = ge.getAvailableFontFamilyNames();
+
+            if(Arrays.asList(fontNames).contains("Courier New")){
+                runGame();  
+              
+            }else{FontError fontWindow = new FontError();
+                  fontWindow.setVisible(true);}
+            
+            
+            
                 
         }
         
