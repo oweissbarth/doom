@@ -45,4 +45,23 @@ public class Inventory {
        return icon;
    }
 
-}
+
+   public void deleteItem(int index){
+      inventory[index] = "e";
+      String[] newInventory = new String[8];
+      int ni=0;
+      
+      for(int oi= 0; oi<inventory.length; oi++){
+          if(!inventory[oi].equals("e")){
+              newInventory[ni]=inventory[oi];
+              ni++;
+          }
+      }
+      
+      while(ni<newInventory.length){
+          newInventory[ni]="e";
+          ni++;
+      }
+      inventory = newInventory;
+   }
+}  

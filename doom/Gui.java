@@ -4,6 +4,8 @@
  */
 package doom;
 
+import java.util.Arrays;
+
 public class Gui extends javax.swing.JFrame {
 
     /**
@@ -321,7 +323,14 @@ public class Gui extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         char c = evt.getKeyChar();
         String s = c + "";
-        GameMain.play(s);
+        String[] inv = {"1", "2", "3", "4", "5", "6", "7"};
+        
+        if ((s.equals("w")) || (s.equals("a")) || (s.equals("s")) || (s.equals("d"))){
+            GameMain.play(s);
+        }else if(Arrays.asList(inv).contains(s)){
+            ;
+        }
+        
     }//GEN-LAST:event_formKeyPressed
     /**
      * functionality of the exit-button 

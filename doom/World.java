@@ -40,14 +40,8 @@ class World {
 		this.gamer = new Player(1, 1);
                 this.inventory= new Inventory();
 	}
-
-	//if the user is pressing a valid key -> rturn true
-	public boolean onKeyPressed(String key) {
-		if ((key.equals("w")) || (key.equals("a")) || (key.equals("s")) || (key.equals("d"))) {
-			return true;
-		} else {return false;}
-	}
-
+        
+        
 	//checking the destination GameTile
 	public boolean moveCheck (int x, int y) {
 		boolean check = true;
@@ -63,7 +57,6 @@ class World {
 	public void move (String key) {
                 int posX = this.gamer.getX();
 		int posY = this.gamer.getY();
-		if (onKeyPressed(key)) {
 			switch (key.charAt(0)) {
 				case 'w' : if (moveCheck(posX-1, posY)) {this.gamer.moveUp();}
 					break;
@@ -74,8 +67,7 @@ class World {
 				case 'd' : if (moveCheck(posX, posY+1)) {this.gamer.moveRight();}
 					break;
 			}
-                        gamer.setPlayerWater();
-                }                   
+                        gamer.setPlayerWater();                                 
         }
 
 	//main-print-function
