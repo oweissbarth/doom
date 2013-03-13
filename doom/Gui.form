@@ -57,10 +57,7 @@
                                           <Component id="exitButton" min="-2" pref="50" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                                      <Component id="mainLabel" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="mainLabel" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="eventPanel" min="-2" max="-2" attributes="0"/>
@@ -316,7 +313,7 @@
               </Border>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Standardcursor"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 100]"/>
@@ -427,7 +424,7 @@
                       <Component id="moneyCounter" alignment="1" max="32767" attributes="0"/>
                       <Component id="waterBar" alignment="0" max="32767" attributes="0"/>
                       <Component id="healthBar" alignment="1" max="32767" attributes="0"/>
-                      <Component id="eventLabel" alignment="1" pref="295" max="32767" attributes="0"/>
+                      <Component id="eventLabel" alignment="1" max="32767" attributes="0"/>
                       <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -439,7 +436,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="eventLabel" min="-2" pref="406" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
                   <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="moneyCounter" min="-2" pref="40" max="-2" attributes="0"/>
