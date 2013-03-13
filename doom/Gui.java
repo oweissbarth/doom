@@ -66,7 +66,7 @@ public class Gui extends javax.swing.JFrame {
         Credits.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         Credits.setText("created by L0rdh3lm & MIndstormerx");
 
-        exitButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        exitButton.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         exitButton.setText("X");
         exitButton.setToolTipText("Quit");
         exitButton.setFocusable(false);
@@ -138,23 +138,23 @@ public class Gui extends javax.swing.JFrame {
         inventoryPanelLayout.setHorizontalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventoryPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(inventOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inventFive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(45, 45, 45)
+                .addGap(40, 40, 40)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inventTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inventSix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(40, 40, 40)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inventSeven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inventThree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(40, 40, 40)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inventEight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inventFour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         inventoryPanelLayout.setVerticalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +167,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(inventFour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inventEight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inventEight, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(inventSeven, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inventSix, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inventFive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -179,6 +179,7 @@ public class Gui extends javax.swing.JFrame {
         eventPanel.setFocusable(false);
         eventPanel.setPreferredSize(new java.awt.Dimension(321, 633));
 
+        waterBar.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         waterBar.setForeground(new java.awt.Color(51, 51, 255));
         waterBar.setMaximum(1500);
         waterBar.setToolTipText("");
@@ -187,11 +188,13 @@ public class Gui extends javax.swing.JFrame {
         waterBar.setString("Water");
         waterBar.setStringPainted(true);
 
+        eventLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         eventLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         eventLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         eventLabel.setMaximumSize(new java.awt.Dimension(299, 440));
         eventLabel.setPreferredSize(new java.awt.Dimension(299, 440));
 
+        healthBar.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         healthBar.setForeground(new java.awt.Color(204, 0, 0));
         healthBar.setMaximum(500);
         healthBar.setToolTipText("");
@@ -200,6 +203,7 @@ public class Gui extends javax.swing.JFrame {
         healthBar.setString("Health");
         healthBar.setStringPainted(true);
 
+        moneyCounter.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         moneyCounter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moneyCounter.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -222,7 +226,7 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(eventPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eventLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moneyCounter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,7 +237,7 @@ public class Gui extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        helpButton.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        helpButton.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         helpButton.setToolTipText("Help");
         helpButton.setFocusable(false);
         helpButton.setLabel(" ? ");
@@ -244,7 +248,7 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        shopButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        shopButton.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         shopButton.setText("$");
         shopButton.setToolTipText("Shop");
         shopButton.setFocusable(false);
@@ -264,18 +268,18 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                            .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(inventoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addComponent(inventoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(shopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(eventPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
@@ -295,12 +299,12 @@ public class Gui extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(shopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
+                                .addGap(45, 45, 45)
                                 .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(inventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(eventPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
+                    .addComponent(eventPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -376,7 +380,7 @@ public class Gui extends javax.swing.JFrame {
     
     //function to draw a string into the mainLabel
     public void setMainLabel(String s) {
-        this.mainLabel.setText("<html><pre>"+s+"</pre></html>");
+        this.mainLabel.setText("<html>"+s+"</html>");
     }
     
     //function to manage the content of the eventLabel

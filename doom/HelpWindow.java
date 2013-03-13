@@ -26,6 +26,7 @@ public class HelpWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        HelpClose.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         HelpClose.setText("close");
         HelpClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -40,7 +41,7 @@ public class HelpWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addComponent(HelpClose)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
