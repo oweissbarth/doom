@@ -138,8 +138,8 @@ class World {
                             break;
                 
                 case 'k':   char itemColor = inventory.getItem(index).charAt(1);
-                            boolean bool = level.openDoor(x, y, itemColor);
-                            if (bool) {
+                            boolean rightKey = level.openDoor(x, y, itemColor);
+                            if (rightKey) {
                                 inventory.deleteItem(index, mainWindow);
                                 draw(mainWindow);
                             }
