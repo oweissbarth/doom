@@ -160,3 +160,27 @@ class DoorTrigger extends GameTile {
             return "t" + this.colorIndex;
         }
 }
+
+//Key GameTile
+class KeyTile extends GameTile {
+        
+        private char colorIndex;
+
+	public KeyTile(int x, int y) {
+		super.setXY(x,y);
+	}
+        
+        public String setColor(int x, int y, int n, String s) {
+            this.colorIndex = s.charAt((x*n)+y+2);
+            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
+            return s;
+        }
+
+	public String toString() {
+            return "k";	
+	}
+        
+        public String getIndex() {
+            return "k" + this.colorIndex;
+        }
+}

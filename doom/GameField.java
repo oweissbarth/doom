@@ -33,6 +33,8 @@ class GameField {
 							break;
                                         case 't' : field[i][j] = new DoorTrigger(i, j); s = this.field[i][j].setColor(i, j, width, s);
                                                         break;
+                                        case 'k' : field[i][j] = new KeyTile(i, j); s = this.field[i][j].setColor(i, j, width, s);
+                                                        break;
                                         case 'w' : field[i][j] = new WaterTile(i, j);
                                                         break;
 					default : field[i][j] = new GameTile();
@@ -83,6 +85,26 @@ class GameField {
         //replace a GameTile with a EmptyTile
         public void tileConv(int x, int y) {
             this.field[x][y] = new EmptyTile(x, y);
+        }
+        
+        //open a door
+        public boolean openDoor (int x, int y, char color) {
+                String position = getTileIndex(x, y).charAt(0)+"";
+                boolean bool = false;
+                int[] xField = {x-1, x+1, x, x};
+                int[] yField = {y, y, y-1, y+1};
+                
+                if (position.equals("t")) {
+                    for (int i=0; i<4; i++) {
+                        String nearTile = getTileIndex(xField[i], yField[i]);
+                        if (nearTile.equals("+"+color)) {
+                            tileConv(xField[i], yField[i]);
+                            tileConv(x, y);
+                            bool = true;
+                        }
+                    }
+                } 
+                return bool;
         }
 
 }

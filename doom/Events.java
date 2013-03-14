@@ -10,6 +10,7 @@ public class Events {
                 case '$' : return "m" + moneyEvent(window);
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
                 case 'w' : inventory.fillInventory("water", window); return " ";
+                case 'k' : inventory.fillInventory(eventIndex, window); return " ";
 
                 default:    window.setVisibility(false); return "e";
             }
@@ -43,6 +44,7 @@ public class Events {
         switch (c) {
             case '$': return true;
             case 'w': return true;
+            case 'k': return true;
             default : return false;
         }
     }

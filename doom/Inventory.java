@@ -50,6 +50,8 @@ public class Inventory {
                         break;
            case 'w':    icon = new ImageIcon(getClass().getResource("/doom/icons/water.png")); 
                         break;
+           case 'k':    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ s.charAt(1) +"Key.png"));
+                        break;
        }
        
        return icon;
@@ -76,15 +78,4 @@ public class Inventory {
       inventory = newInventory;
       setInventoryIcons(mainWindow);
    }
-
-    //////////////////////////////////
-    //USE ITEMS                    //
-    /////////////////////////////////
-    
-    //use water
-    public void useWater(Player gamer, Gui mainWindow){
-        gamer.addPlayerWater(50);
-        mainWindow.setWaterBar(gamer.getPlayerWater());
-        System.out.println(inventory);
-    }
 }  
