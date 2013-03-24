@@ -90,7 +90,7 @@ public class Gui extends javax.swing.JFrame {
         inventFour.setPreferredSize(new java.awt.Dimension(100, 100));
 
         inventEight.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inventEight.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-9-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
+        inventEight.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-8-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
         inventEight.setMaximumSize(new java.awt.Dimension(100, 100));
         inventEight.setMinimumSize(new java.awt.Dimension(100, 100));
         inventEight.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -118,20 +118,20 @@ public class Gui extends javax.swing.JFrame {
         inventOne.setPreferredSize(new java.awt.Dimension(100, 100));
 
         inventSeven.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inventSeven.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-8-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
+        inventSeven.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-7-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
         inventSeven.setMaximumSize(new java.awt.Dimension(100, 100));
         inventSeven.setMinimumSize(new java.awt.Dimension(100, 100));
         inventSeven.setPreferredSize(new java.awt.Dimension(100, 100));
 
         inventSix.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inventSix.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-7-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
+        inventSix.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-6-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
         inventSix.setMaximumSize(new java.awt.Dimension(100, 100));
         inventSix.setMinimumSize(new java.awt.Dimension(100, 100));
         inventSix.setPreferredSize(new java.awt.Dimension(100, 100));
 
         inventFive.setBackground(new java.awt.Color(0, 0, 0));
         inventFive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inventFive.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-6-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
+        inventFive.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-5-", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Courier New", 0, 10), new java.awt.Color(0, 0, 0))); // NOI18N
         inventFive.setMaximumSize(new java.awt.Dimension(100, 100));
         inventFive.setMinimumSize(new java.awt.Dimension(100, 100));
         inventFive.setPreferredSize(new java.awt.Dimension(100, 100));

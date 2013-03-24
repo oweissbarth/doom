@@ -239,7 +239,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" position="2" title="-9-">
+                <TitledBorder justification="2" position="2" title="-8-">
                   <Font PropertyName="font" name="Courier New" size="10" style="0"/>
                   <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                 </TitledBorder>
@@ -335,7 +335,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" position="2" title="-8-">
+                <TitledBorder justification="2" position="2" title="-7-">
                   <Font PropertyName="font" name="Courier New" size="10" style="0"/>
                   <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                 </TitledBorder>
@@ -357,7 +357,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" position="2" title="-7-">
+                <TitledBorder justification="2" position="2" title="-6-">
                   <Font PropertyName="font" name="Courier New" size="10" style="0"/>
                   <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                 </TitledBorder>
@@ -382,7 +382,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" position="2" title="-6-">
+                <TitledBorder justification="2" position="2" title="-5-">
                   <Font PropertyName="font" name="Courier New" size="10" style="0"/>
                   <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                 </TitledBorder>
