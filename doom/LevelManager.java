@@ -10,15 +10,15 @@ class LevelManager {
     private int currentLevelIndex;
     
     /**
-     * This array contains all level
+     * This array contains all levels
      */
-    private String[] levelCollection;
+    private GameField[] levelCollection;
     
     /**
      * Constructor which is creating the level-array and setting the level-index to '1'
      */
     public LevelManager () {
-        this.levelCollection = new String[2];
+        this.levelCollection = new GameField[2];
         this.currentLevelIndex = 1;
         makeLevelCollection();
     }
@@ -35,10 +35,10 @@ class LevelManager {
      * Function to get the string of the current level
      * @return a string of the current level
      */
-    public String getLevelString() {
+    public GameField getLevel() {
         int i = getCurrentLevelIndex();
-        String s = levelCollection[i-1];
-        return s;
+        GameField f = levelCollection[i-1];
+        return f;
     }
     
     /**
@@ -54,7 +54,7 @@ class LevelManager {
      */
     private void makeLevelCollection(){
         //level one
-        this.levelCollection[0] =   "##########################################################################################" +
+        String levelOne =           "##########################################################################################" +
                                     "#---w--$--k(y)--k(r)---------------------------------------------------------------------------#" +
                                     "#---->(2)-----------------------------------------------------------------------------------#" +
                                     "#----------t(r)-------------------------w---------------------------------------------------#" +
@@ -84,8 +84,9 @@ class LevelManager {
                                     "#--------------------------------------------------------------------------------------t(y)+(y)>(2)" +
                                     "#---------------------------------------------------------------------------------------##" +
                                     "##########################################################################################";
-        //level 2
-        this.levelCollection[1] =   "##########################################################################################" +
+        this.levelCollection[0] = new GameField(levelOne, 90, 30);
+        //level two
+        String levelTwo =           "##########################################################################################" +
                                     "<(1)----------------------------------------------------------------------------------------#" +
                                     "#----------------------------------------------------------------------------------------#" +
                                     "#----------------------------------------------------------------------------------------#" +
@@ -115,5 +116,6 @@ class LevelManager {
                                     "#----------------------------------------------------------------------------------------#" +
                                     "#----------------------------------------------------------------------------------------#" +
                                     "##########################################################################################";
+        this.levelCollection[1] = new GameField(levelTwo, 90, 30);
     }
 }

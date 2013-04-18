@@ -25,10 +25,10 @@ public class Inventory {
         for (int i = 0; i<this.inventory.length; i++) {
             if (this.inventory[i].equals("e") && indicator) {
                 this.inventory[i] = object;
-                setInventoryIcons(mainWindow);
                 indicator = false;
             }
-        }      
+        }
+        setInventoryIcons(mainWindow);
     }
 
     

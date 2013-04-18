@@ -8,7 +8,7 @@ class World {
 	//constructor	
 	public World() {
                 this.levelManager = new LevelManager();		
-                this.level = new GameField(levelManager.getLevelString(), 90, 30);
+                this.level = levelManager.getLevel();
 		this.gamer = new Player(1, 1);
                 this.inventory= new Inventory();
 	}
@@ -66,8 +66,9 @@ class World {
                     level.tileConv(x, y);
                 }
                 
+                //create the new Gamefield
                 if (event.refreshWorld(eventIndex)) {
-                    this.level = new GameField(levelManager.getLevelString(), 90, 30);
+                    this.level = levelManager.getLevel();
                 }
                
                 //set player-attributes
