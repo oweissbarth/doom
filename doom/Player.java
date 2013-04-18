@@ -88,13 +88,20 @@ class Player extends GameTile {
             
             switch (index) {
                 case 'm': setPlayerMoney(Integer.parseInt(value));
+                    break;
+                case '>': super.setXY(1, 1);
+                    break;
+                case '<': super.setXY(1, 1);
+                    break;
             }
         }
 
+        //function to set the live status to dead
         public void die(){
             this.alive = false;
         }
         
+        //function to set the live status to alive
         public boolean alive(){
             return alive;
         }

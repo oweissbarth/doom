@@ -1,9 +1,9 @@
 package doom;
 
-public class Events {
+class Events {
   
     //event-manager
-    public String eventManager (Gui window, String eventIndex, Inventory inventory) {
+    public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager) {
             char c = eventIndex.charAt(0);
             
             switch (c){
@@ -11,7 +11,9 @@ public class Events {
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
                 case 'w' : inventory.fillInventory("water", window); return " ";
                 case 'k' : inventory.fillInventory(eventIndex, window); return " ";
-
+                case '>' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
+                case '<' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
+                    
                 default:    window.setVisibility(false); return "e";
             }
     }
@@ -45,6 +47,17 @@ public class Events {
             case '$': return true;
             case 'w': return true;
             case 'k': return true;
+            default : return false;
+        }
+    }
+    
+    //should the programm print a new gamefield?
+    public boolean refreshWorld(String eventIndex) {
+        char c = eventIndex.charAt(0);
+        
+        switch (c) {
+            case '<': return true;
+            case '>': return true;
             default : return false;
         }
     }
