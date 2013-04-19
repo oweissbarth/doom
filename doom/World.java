@@ -57,6 +57,8 @@ class World {
                 int water = gamer.getPlayerWater();
                 //get current gameTile
                 String eventIndex = this.level.getTileIndex(x, y);
+                //get current level-index
+                int lvlIndex = levelManager.getCurrentLevelIndex();
                                          
 		//get the event-code
 		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager);
@@ -69,6 +71,8 @@ class World {
                 //create the new Gamefield
                 if (event.refreshWorld(eventIndex)) {
                     this.level = levelManager.getLevel();
+                    int[] XYArray = this.level.getTileXY("0", lvlIndex);
+                    this.gamer.setXY(XYArray[0], XYArray[1]);
                 }
                
                 //set player-attributes

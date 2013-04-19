@@ -11,8 +11,7 @@ class Events {
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
                 case 'w' : inventory.fillInventory("water", window); return " ";
                 case 'k' : inventory.fillInventory(eventIndex, window); return " ";
-                case '>' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
-                case '<' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
+                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
                     
                 default:    window.setVisibility(false); return "e";
             }
@@ -56,8 +55,7 @@ class Events {
         char c = eventIndex.charAt(0);
         
         switch (c) {
-            case '<': return true;
-            case '>': return true;
+            case '0': return true;
             default : return false;
         }
     }

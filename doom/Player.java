@@ -57,6 +57,10 @@ class Player extends GameTile {
             this.playerMoney += n;
         }
         
+        public void setXY (int x, int y) {
+            super.setXY(x, y);
+        }
+        
         public int getPlayerMoney() {
             return playerMoney;
         }
@@ -85,13 +89,8 @@ class Player extends GameTile {
         public void setAttributes(String eventIndex) {
             char index = eventIndex.charAt(0);
             String value = eventIndex.substring(1, eventIndex.length());
-            
             switch (index) {
                 case 'm': setPlayerMoney(Integer.parseInt(value));
-                    break;
-                case '>': super.setXY(1, 1);
-                    break;
-                case '<': super.setXY(1, 1);
                     break;
             }
         }

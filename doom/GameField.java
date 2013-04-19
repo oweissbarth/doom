@@ -35,9 +35,7 @@ class GameField {
                                                         break;
                                         case 'k' : field[i][j] = new KeyTile(i, j); s = this.field[i][j].setColor(i, j, width, s);
                                                         break;
-                                        case '>' : field[i][j] = new WormInTile(i, j); s = this.field[i][j].setLevelIndex(i, j, width, s);
-                                                        break;
-                                        case '<' : field[i][j] = new WormOutTile(i, j); s = this.field[i][j].setLevelIndex(i, j, width, s);
+                                        case '0' : field[i][j] = new WormTile(i, j); s = this.field[i][j].setLevelIndex(i, j, width, s);
                                                         break;
                                         case 'w' : field[i][j] = new WaterTile(i, j);
                                                         break;
@@ -85,6 +83,28 @@ class GameField {
 		String s = tile.getIndex();
 		return s;
 	}
+        
+        public int[] getTileXY (String index, int value){
+            int[] XYArray = new int[2];
+            
+            for (int i = 0; i < this.height; i++) {
+                for (int j = 0; j < this.width; j++) {
+                    
+                    GameTile tile = this.field[i][j];
+                    String tileIndex = tile.getIndex().charAt(0) + "";
+                    
+                    if (tileIndex.equals(index)){
+                        int tileValue = Integer.parseInt(tile.getIndex().charAt(1) + "");
+                       
+                        if (value == tileValue) {
+                            XYArray[0] = tile.getX();
+                            XYArray[1] = tile.getY();
+                        }                       
+                    }
+                }
+            } 
+            return XYArray;
+        }
         
         //replace a GameTile with a EmptyTile
         public void tileConv(int x, int y) {
