@@ -22,8 +22,9 @@ public class GameMain {
             if(Arrays.asList(fontNames).contains("Courier New")){
                 runGame();  
               
-            }else{FontError fontWindow = new FontError();
-                  fontWindow.setVisible(true);}
+            }else{
+                FontError fontWindow = new FontError();
+                fontWindow.setVisible(true);}
             
             
             

@@ -235,3 +235,19 @@ class WormOutTile extends GameTile {
             return "<" + this.levelIndex;
         }
 }
+
+class SwordTile extends GameTile{
+    public SwordTile(int x, int y) {
+		super.setXY(x,y);
+	}
+
+    public String toString(){
+        return "|";
+    }
+    
+    public String getIndex(){
+        return "|";
+    }
+}
+
+

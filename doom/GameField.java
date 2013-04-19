@@ -21,28 +21,46 @@ class GameField {
 				char c = s.charAt((i*width)+j);
 				
 				switch (c) {
-					case '#': field[i][j] = new WallTile(i,j);
-							break;
-					case '-' : field[i][j] = new EmptyTile(i,j);
-							break;
-					case '@' : field[i][j] = new DragonTile(i,j);
-							break;
-					case '+' : field[i][j] = new DoorTile(i,j); s = this.field[i][j].setColor(i, j, width, s);
-							break;
-					case '$' : field[i][j] = new MoneyTile(i,j);
-							break;
-                                        case 't' : field[i][j] = new DoorTrigger(i, j); s = this.field[i][j].setColor(i, j, width, s);
-                                                        break;
-                                        case 'k' : field[i][j] = new KeyTile(i, j); s = this.field[i][j].setColor(i, j, width, s);
-                                                        break;
-                                        case '>' : field[i][j] = new WormInTile(i, j); s = this.field[i][j].setLevelIndex(i, j, width, s);
-                                                        break;
-                                        case '<' : field[i][j] = new WormOutTile(i, j); s = this.field[i][j].setLevelIndex(i, j, width, s);
-                                                        break;
-                                        case 'w' : field[i][j] = new WaterTile(i, j);
-                                                        break;
-					default : field[i][j] = new GameTile();
-							break;	
+					case '#':   field[i][j] = new WallTile(i,j);
+                                                    break;
+					
+                                        case '-' :  field[i][j] = new EmptyTile(i,j);
+                                                    break;
+					
+                                        case '@' :  field[i][j] = new DragonTile(i,j);
+                                                    break;
+					
+                                        case '+' :  field[i][j] = new DoorTile(i,j); 
+                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    break;
+					
+                                        case '$' :  field[i][j] = new MoneyTile(i,j);
+                                                    break;
+                                        
+                                        case 't' :  field[i][j] = new DoorTrigger(i, j);
+                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    break;
+                                        
+                                        case 'k' :  field[i][j] = new KeyTile(i, j);
+                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    break;
+                                        
+                                        case '>' :  field[i][j] = new WormInTile(i, j); 
+                                                    s = this.field[i][j].setLevelIndex(i, j, width, s);
+                                                    break;
+                                        
+                                        case '<' :  field[i][j] = new WormOutTile(i, j); 
+                                                    s = this.field[i][j].setLevelIndex(i, j, width, s);
+                                                    break;
+                                        
+                                        case 'w' :  field[i][j] = new WaterTile(i, j);
+                                                    break;
+                                        
+                                        case '|' :  field[i][j] = new SwordTile(i, j); 
+                                                    break;
+					
+                                        default :   field[i][j] = new GameTile();
+                                                    break;	
 				}
 			}		
 		}
@@ -110,6 +128,37 @@ class GameField {
                 } 
                 return bool;
         }
-
+        
+        public boolean killDragon(int x, int y){
+            boolean dragonKilled= false;
+            int dragonPosX = 0;
+            int dragonPosY = 0;
+            
+            for(int i = -1; i<=1; i++){
+                if (getTileIndex(i+x, y).equals("@")){
+                    tileConv(i+x,y);
+                    dragonKilled = true;
+                    dragonPosX = i+x;
+                    dragonPosY = y;
+                    
+                }
+            }
+            for(int i = -1; i<=1; i++){
+                if(getTileIndex(x, i+y).equals("@")){
+                    tileConv(x, i+y);
+                    dragonKilled = true;
+                    dragonPosX = x;
+                    dragonPosY = i+y;
+                    
+                }
+            }
+            if(dragonKilled){
+                for(int i = -1; i <= 1; i++){
+                    tileConv(dragonPosX + i, dragonPosY);
+                    tileConv(dragonPosX, dragonPosY + i);
+                }
+            }
+            return dragonKilled;
+            }
 }
 

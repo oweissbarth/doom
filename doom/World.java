@@ -39,7 +39,8 @@ class World {
 				case 'd' : if (moveCheck(posX, posY+1)) {this.gamer.moveRight();}
 					break;
 			}
-                        gamer.reducePlayerWater(3);                                 
+                        gamer.reducePlayerWater(3);
+                        
         }
 
 	//main-print-function
@@ -53,13 +54,12 @@ class World {
                 //get current position of the player
                 int x = this.gamer.getX();
 		int y = this.gamer.getY();
-                //get current waterstatus
-                int water = gamer.getPlayerWater();
+                
                 //get current gameTile
                 String eventIndex = this.level.getTileIndex(x, y);
                                          
 		//get the event-code
-		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager);
+		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager, gamer);
                              
                 //delete the event-GameTile
                 if (event.delEvent(eventIndex)) {
@@ -74,13 +74,18 @@ class World {
                 //set player-attributes
                 gamer.setAttributes(eventCombinedIndex);
                 
+                //get current waterstatus
+                int water = gamer.getPlayerWater();
                 //edit the waterBar
                 mainWindow.setWaterBar(water);
                 //get current balance
                 int money = gamer.getPlayerMoney();
                 //edit the MoneyCounter
                 mainWindow.setMoneyCounter(money);
-                          
+                //get current health
+                int health = gamer.getPlayerHealth();
+                //edit health bar
+                mainWindow.setHealthBar(health);
                 
                 //convert the GameField into a string
 		String sub1 = level.toString();
@@ -117,6 +122,12 @@ class World {
                 case 'k':   char itemColor = inventory.getItem(index).charAt(1);
                             boolean rightKey = level.openDoor(x, y, itemColor);
                             if (rightKey) {
+                                inventory.deleteItem(index, mainWindow);
+                                draw(mainWindow);
+                            }
+                            break;
+                
+                case 's':   if (level.killDragon(x,y)){
                                 inventory.deleteItem(index, mainWindow);
                                 draw(mainWindow);
                             }

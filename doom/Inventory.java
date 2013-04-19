@@ -52,6 +52,8 @@ public class Inventory {
                         break;
            case 'k':    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ s.charAt(1) +"Key.png"));
                         break;
+           case 's':    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
+                        break;
        }
        
        return icon;

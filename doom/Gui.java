@@ -170,7 +170,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(inventFour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inventEight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inventEight, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(inventSeven, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inventSix, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inventFive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -199,9 +199,9 @@ public class Gui extends javax.swing.JFrame {
 
         healthBar.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         healthBar.setForeground(new java.awt.Color(204, 0, 0));
-        healthBar.setMaximum(500);
+        healthBar.setMaximum(2000);
         healthBar.setToolTipText("");
-        healthBar.setValue(500);
+        healthBar.setValue(2000);
         healthBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         healthBar.setString("Health");
         healthBar.setStringPainted(true);
@@ -221,7 +221,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(waterBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(healthBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
-                    .addComponent(eventLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eventLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                 .addContainerGap())
         );
         eventPanelLayout.setVerticalGroup(
@@ -409,6 +409,12 @@ public class Gui extends javax.swing.JFrame {
     public void setWaterBar (int value) {
         this.waterBar.setValue(value);
         this.waterBar.setString("Water: " + value);
+    }
+    
+    //function to manage the healthStatusBar
+    public void setHealthBar(int value){
+        this.healthBar.setValue(value);
+        this.healthBar.setString("Health: " + value);
     }
     
     //function to manage the moneyCounter

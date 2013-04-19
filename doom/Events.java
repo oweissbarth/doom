@@ -3,7 +3,7 @@ package doom;
 class Events {
   
     //event-manager
-    public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager) {
+    public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager, Player gamer) {
             char c = eventIndex.charAt(0);
             
             switch (c){
@@ -13,7 +13,8 @@ class Events {
                 case 'k' : inventory.fillInventory(eventIndex, window); return " ";
                 case '>' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
                 case '<' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
-                    
+                case '@' : gamer.setPlayerHealth(-400); return " ";  
+                case '|' : inventory.fillInventory("sword", window); return " ";
                 default:    window.setVisibility(false); return "e";
             }
     }
@@ -34,6 +35,8 @@ class Events {
                 break;
             case 'y' : window.setEventLabel("Next to you is a yellow door!");
                 break;
+            case '@' : window.setEventLabel("Next to you is a Dragon!");
+                break;
             default  : window.setEventLabel("Next to you is a black hole!");
                 break;
         }           
@@ -47,6 +50,7 @@ class Events {
             case '$': return true;
             case 'w': return true;
             case 'k': return true;
+            case '|': return true;
             default : return false;
         }
     }

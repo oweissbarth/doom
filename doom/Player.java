@@ -4,6 +4,7 @@ package doom;
 class Player extends GameTile {
         private int playerMoney;
         private int playerWater;
+        private int playerHealth;
         private boolean alive = true;
         
         
@@ -12,6 +13,7 @@ class Player extends GameTile {
 		super.setXY(x,y);
                 this.playerMoney = 0;
                 this.playerWater = 1503;
+                this.playerHealth = 2000;
 	}
 	
 	//add the player to the canvas
@@ -79,6 +81,18 @@ class Player extends GameTile {
         
         public int getPlayerWater(){
             return playerWater;
+        }
+        
+        public void setPlayerHealth(int n){
+           if(playerHealth>0){
+               this.playerHealth+=n;
+           }else{
+               die();
+           }
+        }
+        
+        public int getPlayerHealth(){
+            return playerHealth;
         }
         
         //set attributes of this player
