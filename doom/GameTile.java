@@ -189,12 +189,12 @@ class KeyTile extends GameTile {
         }
 }
 
-//Wormehole GameTiles
-class WormInTile extends GameTile {
+//Wormehole GameTile
+class WormTile extends GameTile {
         
         private char levelIndex;
 
-	public WormInTile(int x, int y) {
+	public WormTile(int x, int y) {
 		super.setXY(x,y);
 	}
         
@@ -205,34 +205,11 @@ class WormInTile extends GameTile {
         }
 
 	public String toString() {
-            return ">";	
+            return "0";	
 	}
         
         public String getIndex() {
-            return ">" + this.levelIndex;
-        }
-}
-
-class WormOutTile extends GameTile {
-        
-        private char levelIndex;
-
-	public WormOutTile(int x, int y) {
-		super.setXY(x,y);
-	}
-        
-        public String setLevelIndex(int x, int y, int n, String s) {
-            this.levelIndex = s.charAt((x*n)+y+2);
-            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
-            return s;
-        }
-
-	public String toString() {
-            return "l";	// TODO!! the program should print an '<' instead 'l'
-	}
-        
-        public String getIndex() {
-            return "<" + this.levelIndex;
+            return "0" + this.levelIndex;
         }
 }
 

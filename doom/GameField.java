@@ -104,6 +104,28 @@ class GameField {
 		return s;
 	}
         
+        public int[] getTileXY (String index, int value){
+            int[] XYArray = new int[2];
+            
+            for (int i = 0; i < this.height; i++) {
+                for (int j = 0; j < this.width; j++) {
+                    
+                    GameTile tile = this.field[i][j];
+                    String tileIndex = tile.getIndex().charAt(0) + "";
+                    
+                    if (tileIndex.equals(index)){
+                        int tileValue = Integer.parseInt(tile.getIndex().charAt(1) + "");
+                       
+                        if (value == tileValue) {
+                            XYArray[0] = tile.getX();
+                            XYArray[1] = tile.getY();
+                        }                       
+                    }
+                }
+            } 
+            return XYArray;
+        }
+        
         //replace a GameTile with a EmptyTile
         public void tileConv(int x, int y) {
             this.field[x][y] = new EmptyTile(x, y);
