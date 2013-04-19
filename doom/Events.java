@@ -13,8 +13,7 @@ class Events {
                 case 'k' : inventory.fillInventory(eventIndex, window); return " ";
                 case '@' : gamer.setPlayerHealth(-400); return " ";  
                 case '|' : inventory.fillInventory("sword", window); return " ";
-
-                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return ">" + eventIndex.charAt(1);
+                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return " ";
                 default:    window.setVisibility(false); return "e";
             }
     }

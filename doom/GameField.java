@@ -45,14 +45,9 @@ class GameField {
                                                     s = this.field[i][j].setColor(i, j, width, s);
                                                     break;
                                         
-                                        case '>' :  field[i][j] = new WormInTile(i, j); 
+                                        case '0' :  field[i][j] = new WormTile(i, j); 
                                                     s = this.field[i][j].setLevelIndex(i, j, width, s);
-                                                    break;
-                                        
-                                        case '<' :  field[i][j] = new WormOutTile(i, j); 
-                                                    s = this.field[i][j].setLevelIndex(i, j, width, s);
-                                                    break;
-                                        
+                                                    break;                                      
                                         case 'w' :  field[i][j] = new WaterTile(i, j);
                                                     break;
                                         
