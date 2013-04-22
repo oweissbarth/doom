@@ -20,7 +20,7 @@ public class Inventory {
     }
     
     
-    public void fillInventory (String object, Gui mainWindow) {
+    public boolean fillInventory (String object, Gui mainWindow) {
         boolean indicator = true;
         for (int i = 0; i<this.inventory.length; i++) {
             if (this.inventory[i].equals("e") && indicator) {
@@ -29,6 +29,7 @@ public class Inventory {
             }
         }
         setInventoryIcons(mainWindow);
+        return indicator;
     }
 
     

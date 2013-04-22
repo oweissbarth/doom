@@ -64,9 +64,10 @@ class World {
 		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager, gamer);
                              
                 //delete the event-GameTile
-                if (event.delEvent(eventIndex)) {
-                    level.tileConv(x, y);
-                }
+                if ( !(eventCombinedIndex.equals("yes")))
+                    if (event.delEvent(eventIndex)) {
+                        level.tileConv(x, y);
+                    }
                 
                 //create the new Gamefield
                 if (event.refreshWorld(eventIndex)) {
