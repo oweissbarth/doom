@@ -9,11 +9,12 @@ class Events {
             switch (c){
                 case '$' : return "m" + moneyEvent(window);
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
-                case 'w' : if (inventory.fillInventory("water", window)) {return "yes"; } else { return " ";}
-                case 'k' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
-                case '@' : gamer.setPlayerHealth(-400); return " ";  
-                case '|' : if (inventory.fillInventory("sword", window)) {return "yes"; } else { return " ";}
+                case '@' : gamer.setPlayerHealth(-400); return " ";
                 case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return " ";
+                case 'w' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
+                case 'k' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
+                case 's' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
+                
                 default:    window.setVisibility(false); return "e";
             }
     }
@@ -49,7 +50,7 @@ class Events {
             case '$': return true;
             case 'w': return true;
             case 'k': return true;
-            case '|': return true;
+            case 's': return true;
             default : return false;
         }
     }

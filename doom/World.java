@@ -1,4 +1,7 @@
 package doom;
+
+import java.util.Arrays;
+
 class World {
         private LevelManager levelManager;
 	private GameField level;
@@ -114,9 +117,10 @@ class World {
             int x = this.gamer.getX();
             int y = this.gamer.getY();
             int index = (Integer.parseInt(s))-1;
-            char item = inventory.getItem(index).charAt(0);
+            String item = inventory.getItem(index);
+            char itemID = inventory.getItem(index).charAt(0);
             
-            switch(item){
+            switch(itemID){
                 case 'e':   break;
                     
                 case 'w':   gamer.addPlayerWater(50);
@@ -132,12 +136,25 @@ class World {
                             }
                             break;
                 
-                case 's':   if (level.killDragon(x,y)){
-                                inventory.deleteItem(index, mainWindow);
+                case 's':   int[] dragonPos = level.nearDragon(x, y);
+                            int[] defaultPos = {-1, -1};
+                    
+                            if (!Arrays.equals(dragonPos, defaultPos)){  
+                                if (level.killDragon(dragonPos[0], dragonPos[1], item)){
+                                    inventory.deleteItem(index, mainWindow);
+                                    //TODO damage to sword
+                                    draw(mainWindow);
+                            }else{
+                                int hp = Integer.parseInt(level.getTileIndex(dragonPos[0], dragonPos[1]).substring(1));
+                                int dm = Integer.parseInt(item.substring(1));
+                                gamer.setPlayerHealth(dm - hp);
                                 draw(mainWindow);
+                                //TODO damage to sword
+                    
                             }
                             break;
-            }
-        }
+                            }
+            }   
+    }
 }
 

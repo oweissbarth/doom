@@ -103,9 +103,11 @@ class MoneyTile extends GameTile {
 
 //Dragon GameTile
 class DragonTile extends GameTile {
-
+        int healthPoints;
+    
 	public DragonTile(int x, int y) {
             super.setXY(x,y);
+            healthPoints = (int) (Math.random() * 200);
 	}
 
 	public String toString() {
@@ -113,7 +115,11 @@ class DragonTile extends GameTile {
 	}
         
         public String getIndex() {
-            return "@";
+            return "@" + healthPoints;
+        }
+        
+        public int getHealthPoints(){
+            return healthPoints;
         }
 }
 
@@ -214,8 +220,11 @@ class WormTile extends GameTile {
 }
 
 class SwordTile extends GameTile{
+    int damage;
+    
     public SwordTile(int x, int y) {
 		super.setXY(x,y);
+                damage = (int)(Math.random() * 200);
 	}
 
     public String toString(){
@@ -223,7 +232,11 @@ class SwordTile extends GameTile{
     }
     
     public String getIndex(){
-        return "|";
+        return "s" + damage;
+    }
+    
+    public int getDamage(){
+        return damage;
     }
 }
 

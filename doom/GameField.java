@@ -146,33 +146,39 @@ class GameField {
                 return bool;
         }
         
-        public boolean killDragon(int x, int y){
-            boolean dragonKilled= false;
-            int dragonPosX = 0;
-            int dragonPosY = 0;
+        public int[] nearDragon(int x, int y){
+            int dragonPosX = -1;
+            int dragonPosY = -1;
             
             for(int i = -1; i<=1; i++){
-                if (getTileIndex(i+x, y).equals("@")){
-                    tileConv(i+x,y);
-                    dragonKilled = true;
+                if (getTileIndex(i + x, y).charAt(0) == '@'){
                     dragonPosX = i+x;
                     dragonPosY = y;
-                    
                 }
             }
+            
             for(int i = -1; i<=1; i++){
-                if(getTileIndex(x, i+y).equals("@")){
-                    tileConv(x, i+y);
-                    dragonKilled = true;
+                if(getTileIndex(x, i+y).charAt(0) == '@'){
                     dragonPosX = x;
                     dragonPosY = i+y;
-                    
                 }
             }
-            if(dragonKilled){
+        int[] pos = {dragonPosX, dragonPosY};
+        return pos;
+        }
+        
+        
+        
+        public boolean killDragon(int x, int y, String item){
+            boolean dragonKilled= false;
+            int damage = Integer.parseInt(item.substring(1));
+            int hp = Integer.parseInt(getTileIndex(x, y).substring(1));
+            
+            if(damage >= hp){
+                dragonKilled = true;
                 for(int i = -1; i <= 1; i++){
-                    tileConv(dragonPosX + i, dragonPosY);
-                    tileConv(dragonPosX, dragonPosY + i);
+                    tileConv(x + i, y);
+                    tileConv(x, y + i);
                 }
             }
             return dragonKilled;
