@@ -19,6 +19,17 @@ public class Inventory {
         return inventory[i];
     }
     
+    //Setter for Sword damage
+    public void setSwordDamage(Gui mainWindow, int index){
+        int damage = Integer.parseInt(inventory[index].substring(1));
+        damage -= 20;
+        inventory[index]="s"+ damage;
+        if (Integer.parseInt(inventory[index].substring(1))<=0){
+            inventory[index]="e";
+        }
+        setInventoryIcons(mainWindow);
+    }
+    
     
     public boolean fillInventory (String object, Gui mainWindow) {
         boolean indicator = true;

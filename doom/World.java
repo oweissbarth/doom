@@ -141,8 +141,8 @@ class World {
                     
                             if (!Arrays.equals(dragonPos, defaultPos)){  
                                 if (level.killDragon(dragonPos[0], dragonPos[1], item)){
-                                    inventory.deleteItem(index, mainWindow);
-                                    //TODO damage to sword
+                                    //inventory.deleteItem(index, mainWindow);
+                                    inventory.setSwordDamage(mainWindow, index);
                                     draw(mainWindow);
                             }else{
                                 int hp = Integer.parseInt(level.getTileIndex(dragonPos[0], dragonPos[1]).substring(1));
@@ -150,6 +150,7 @@ class World {
                                 gamer.setPlayerHealth(dm - hp);
                                 draw(mainWindow);
                                 //TODO damage to sword
+                                inventory.setSwordDamage(mainWindow, index);
                     
                             }
                             break;
