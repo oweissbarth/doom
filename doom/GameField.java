@@ -99,21 +99,24 @@ class GameField {
 		return s;
 	}
         
-        public int[] getTileXY (String index, int value){
+        public int[] getTileXY (String index, int destination ){
             int[] XYArray = new int[2];
+            boolean check = true;
             
-            for (int i = 0; i < this.height; i++) {
-                for (int j = 0; j < this.width; j++) {
+            for (int i = 0; (i < this.height) && (check); i++) {
+                for (int j = 0; (j < this.width)  && (check); j++) {
                     
                     GameTile tile = this.field[i][j];
                     String tileIndex = tile.getIndex().charAt(0) + "";
                     
                     if (tileIndex.equals(index)){
-                        int tileValue = Integer.parseInt(tile.getIndex().charAt(1) + "");
+                        //int tileValue = Integer.parseInt(tile.getIndex().charAt(1) + "");
+                        int portalIndex = Integer.parseInt(tile.getIndex().charAt(2) + "");
                        
-                        if (value == tileValue) {
+                        if (destination == portalIndex) {
                             XYArray[0] = tile.getX();
                             XYArray[1] = tile.getY();
+                                check = false;
                         }                       
                     }
                 }

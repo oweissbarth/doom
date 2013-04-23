@@ -199,6 +199,8 @@ class KeyTile extends GameTile {
 class WormTile extends GameTile {
         
         private char levelIndex;
+        private char portalIndex;
+        private char destination;
 
 	public WormTile(int x, int y) {
 		super.setXY(x,y);
@@ -206,7 +208,9 @@ class WormTile extends GameTile {
         
         public String setLevelIndex(int x, int y, int n, String s) {
             this.levelIndex = s.charAt((x*n)+y+2);
-            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
+            this.portalIndex = s.charAt((x*n)+y+4);
+            this.destination = s.charAt((x*n)+y+6);
+            s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+7);
             return s;
         }
 
@@ -215,7 +219,7 @@ class WormTile extends GameTile {
 	}
         
         public String getIndex() {
-            return "0" + this.levelIndex;
+            return "0" + this.levelIndex + this.portalIndex + this.destination;
         }
 }
 

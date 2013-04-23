@@ -59,9 +59,7 @@ class World {
 		int y = this.gamer.getY();
                 
                 //get current gameTile
-                String eventIndex = this.level.getTileIndex(x, y);
-                //get current level-index
-                int lvlIndex = levelManager.getCurrentLevelIndex();
+                String eventIndex = this.level.getTileIndex(x, y);               
                                          
 		//get the event-code
 		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager, gamer);
@@ -75,7 +73,7 @@ class World {
                 //create the new Gamefield
                 if (event.refreshWorld(eventIndex)) {
                     this.level = levelManager.getLevel();
-                    int[] XYArray = this.level.getTileXY("0", lvlIndex);
+                    int[] XYArray = this.level.getTileXY("0", Integer.parseInt(eventCombinedIndex));
                     this.gamer.setXY(XYArray[0], XYArray[1]);
                 }
                
