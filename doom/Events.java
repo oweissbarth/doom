@@ -5,7 +5,7 @@ class Events {
     //event-manager
     public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager, Player gamer) {
             char c = eventIndex.charAt(0);
-            
+            System.out.println(eventIndex);
             switch (c){
                 case '$' : return "m" + moneyEvent(window);
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
