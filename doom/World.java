@@ -138,19 +138,19 @@ class World {
                 
                 case 's':   int[] dragonPos = level.nearDragon(x, y);
                             int[] defaultPos = {-1, -1};
-                    
                             if (!Arrays.equals(dragonPos, defaultPos)){  
-                                if (level.killDragon(dragonPos[0], dragonPos[1], item)){
-                                    //inventory.deleteItem(index, mainWindow);
-                                    inventory.setSwordDamage(mainWindow, index);
-                                    draw(mainWindow);
-                            }else{
                                 int hp = Integer.parseInt(level.getTileIndex(dragonPos[0], dragonPos[1]).substring(1));
                                 int dm = Integer.parseInt(item.substring(1));
-                                gamer.setPlayerHealth(dm - hp);
-                                draw(mainWindow);
-                                //TODO damage to sword
-                                inventory.setSwordDamage(mainWindow, index);
+                                if (level.killDragon(dragonPos[0], dragonPos[1], item)){
+                                    //inventory.deleteItem(index, mainWindow);
+                                    mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You win!");
+                                    inventory.setSwordDamage(mainWindow, index);
+                                    draw(mainWindow);
+                                }else{
+                                    gamer.setPlayerHealth(dm - hp);
+                                    mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You loose!");
+                                    draw(mainWindow);
+                                    inventory.setSwordDamage(mainWindow, index);
                     
                             }
                             break;

@@ -25,7 +25,7 @@ public class Inventory {
         damage -= 20;
         inventory[index]="s"+ damage;
         if (Integer.parseInt(inventory[index].substring(1))<=0){
-            inventory[index]="e";
+            deleteItem(index, mainWindow);
         }
         setInventoryIcons(mainWindow);
     }

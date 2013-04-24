@@ -394,16 +394,23 @@ public class Gui extends javax.swing.JFrame {
     }
     
     //function to manage the content of the eventLabel
-    public void setEventLabel(String s){
-        this.eventLabel.setText(s);
+    public void setEventLabel(String newLine){
+        String content = eventLabel.getText();
+        String newContent;
+        if(content.equals("")){
+            newContent = "<html>" + newLine;   
+        }else{
+          newContent  = "<html>" + newLine + "<br>" + content.replaceFirst("<html>", "");
+        }
+        eventLabel.setText(newContent);
     }
     
     //function to manage the visibility
-    public void setVisibility(boolean b){
+    /*public void setVisibility(boolean b){
         if (!(b)) {
             this.eventLabel.setText("");
         } 
-    }
+    }*/
     
     //function to manage the waterStatusBar
     public void setWaterBar (int value) {

@@ -11,11 +11,17 @@ class Events {
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
                 case '@' : gamer.setPlayerHealth(-400); return " ";
                 case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return " ";
-                case 'w' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
-                case 'k' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
-                case 's' : if (inventory.fillInventory(eventIndex, window)) {return "yes"; } else { return " ";}
+                case 'w' : if (inventory.fillInventory(eventIndex, window)) {
+                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
+                                window.setEventLabel("You found a bottle of water!"); return " ";}
+                case 'k' : if (inventory.fillInventory(eventIndex, window)) {
+                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
+                                window.setEventLabel("You found a key!"); return " ";}
+                case 's' : if (inventory.fillInventory(eventIndex, window)) {
+                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
+                                window.setEventLabel("You found a sword!"); return " ";}
                 
-                default:    window.setVisibility(false); return "e";
+                default:    /*window.setVisibility(false); */return "e";
             }
     }
     

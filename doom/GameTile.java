@@ -107,7 +107,7 @@ class DragonTile extends GameTile {
     
 	public DragonTile(int x, int y) {
             super.setXY(x,y);
-            healthPoints = (int) (Math.random() * 200);
+            healthPoints = (int) (Math.random() * 50);
 	}
 
 	public String toString() {
