@@ -3,40 +3,40 @@ package doom;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class Inventory {
-    String[] inventory;
+class Inventory {
+    private GameTile[] inventory;
     
     //Constructor to create 
     public Inventory () {
-        this.inventory = new String[8];
+        this.inventory = new GameTile[8];
         for (int i = 0; i<this.inventory.length; i++) {
-            this.inventory[i] = "e";
+            this.inventory[i] = new EmptyTile(0, 0);
         }
     }
     
    //Getter for Inventory Item
-    public String getItem(int i){
-        return inventory[i];
+    public GameTile getItem(int i){
+        return this.inventory[i];
     }
     
-    //Setter for Sword damage
-    public void setSwordDamage(Gui mainWindow, int index){
-        int damage = Integer.parseInt(inventory[index].substring(1));
-        damage -= 20;
-        inventory[index]="s"+ damage;
-        if (Integer.parseInt(inventory[index].substring(1))<=0){
-            deleteItem(index, mainWindow);
-        }
-        setInventoryIcons(mainWindow);
-    }
+//    //Setter for Sword damage
+//    public void setSwordDamage(Gui mainWindow, int index){
+//        int damage = Integer.parseInt(inventory[index].substring(1));
+//        damage -= 20;
+//        inventory[index]="s"+ damage;
+//        if (Integer.parseInt(inventory[index].substring(1))<=0){
+//            deleteItem(index, mainWindow);
+//        }
+//        setInventoryIcons(mainWindow);
+//    }
     
     
-    public boolean fillInventory (String object, Gui mainWindow) {
-        boolean indicator = true;
+    public boolean fillInventory (GameTile object, Gui mainWindow) {
+        boolean indicator = false;
         for (int i = 0; i<this.inventory.length; i++) {
-            if (this.inventory[i].equals("e") && indicator) {
+            if (this.inventory[i].toString().equals("\u00A0") && !indicator) {
                 this.inventory[i] = object;
-                indicator = false;
+                indicator = true;
             }
         }
         setInventoryIcons(mainWindow);
@@ -54,17 +54,17 @@ public class Inventory {
     
    
     //Dictionary for the icon-locations
-    private Icon chooseIcon(String s){
+    private Icon chooseIcon(GameTile item){
        Icon icon = null;
        
-       switch(s.charAt(0)){
+       switch(item.toString().charAt(0)){
            case 'e':    icon = new ImageIcon(getClass().getResource("/doom/icons/empty.png")); 
                         break;
            case 'w':    icon = new ImageIcon(getClass().getResource("/doom/icons/water.png")); 
                         break;
-           case 'k':    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ s.charAt(1) +"Key.png"));
+           case 'k':    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ ((KeyTile)item).getColorIndex() +"Key.png"));
                         break;
-           case 's':    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
+           case '|':    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
                         break;
        }
        
@@ -74,21 +74,20 @@ public class Inventory {
 
     //Deletes an item from the inventory and rearranges the items
     public void deleteItem(int index, Gui mainWindow){
-      inventory[index] = "e";
-      String[] newInventory = new String[8];
+      inventory[index] = new EmptyTile(0, 0);
+      GameTile[] newInventory = new GameTile[8];
       int ni=0;
       
       for(int oi= 0; oi<inventory.length; oi++){
-          if(!inventory[oi].equals("e")){
+          if(!inventory[oi].toString().equals("\u00A0")){
               newInventory[ni]=inventory[oi];
+              ni++;
+          } else {
+              newInventory[ni] = new EmptyTile(0, 0);
               ni++;
           }
       }
       
-      while(ni<newInventory.length){
-          newInventory[ni]="e";
-          ni++;
-      }
       inventory = newInventory;
       setInventoryIcons(mainWindow);
    }

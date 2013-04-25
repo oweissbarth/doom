@@ -169,6 +169,10 @@ class DoorTrigger extends GameTile {
         public String getIndex() {
             return "t" + this.colorIndex;
         }
+        
+        public char getTriggerPurpose (){
+            return this.colorIndex;
+        }
 }
 
 //Key GameTile
@@ -185,6 +189,10 @@ class KeyTile extends GameTile {
             s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
             return s;
         }
+        
+        public char getColorIndex () {
+            return this.colorIndex;
+        }
 
 	public String toString() {
             return "k";	
@@ -198,18 +206,18 @@ class KeyTile extends GameTile {
 //Wormehole GameTile
 class WormTile extends GameTile {
         
-        private char levelIndex;
-        private char portalIndex;
-        private char destination;
+        private int levelIndex;
+        private int portalIndex;
+        private int destination;
 
 	public WormTile(int x, int y) {
 		super.setXY(x,y);
 	}
         
         public String setLevelIndex(int x, int y, int n, String s) {
-            this.levelIndex = s.charAt((x*n)+y+2);
-            this.portalIndex = s.charAt((x*n)+y+4);
-            this.destination = s.charAt((x*n)+y+6);
+            this.levelIndex = Integer.parseInt(s.charAt((x*n)+y+2) + "");
+            this.portalIndex = Integer.parseInt(s.charAt((x*n)+y+4) + "");
+            this.destination = Integer.parseInt(s.charAt((x*n)+y+6) + "");
             s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+7);
             return s;
         }
@@ -217,6 +225,18 @@ class WormTile extends GameTile {
 	public String toString() {
             return "0";	
 	}
+        
+        public int getLevelIndex() {
+            return this.levelIndex;
+        }
+        
+        public int getPortalIndex() {
+            return this.portalIndex;
+        }
+        
+        public int getDestination() {
+            return this.destination;
+        }
         
         public String getIndex() {
             return "0" + this.levelIndex + this.portalIndex + this.destination;

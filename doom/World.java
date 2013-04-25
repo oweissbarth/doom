@@ -59,25 +59,23 @@ class World {
 		int y = this.gamer.getY();
                 
                 //get current gameTile
-                String eventIndex = this.level.getTileIndex(x, y);               
+                GameTile eventGameTile = this.level.getTile(x, y);
                                          
 		//get the event-code
-		String eventCombinedIndex = event.eventManager(mainWindow, eventIndex, inventory, levelManager, gamer);
+		int eventCombinedIndex = event.eventManager(mainWindow, eventGameTile, inventory, levelManager, gamer);
                              
                 //delete the event-GameTile
-                if ( !(eventCombinedIndex.equals("yes")))
-                    if (event.delEvent(eventIndex)) {
+                if (eventCombinedIndex == 1) {
+                    if (event.delEvent(eventGameTile.toString())) {
                         level.tileConv(x, y);
                     }
+                }
                 //create the new Gamefield
-                if (event.refreshWorld(eventIndex)) {
+                if (event.refreshWorld(eventGameTile.toString())) {
                     this.level = levelManager.getLevel();
-                    int[] XYArray = this.level.getTileXY("0", Integer.parseInt(eventCombinedIndex));
+                    int[] XYArray = this.level.getTileXY("0", eventCombinedIndex);
                     this.gamer.setXY(XYArray[0], XYArray[1]);
                 }
-               
-                //set player-attributes
-                gamer.setAttributes(eventCombinedIndex);
                 
                 //get current waterstatus
                 int water = gamer.getPlayerWater();
@@ -114,18 +112,19 @@ class World {
             int x = this.gamer.getX();
             int y = this.gamer.getY();
             int index = (Integer.parseInt(s))-1;
-            String item = inventory.getItem(index);
-            char itemID = inventory.getItem(index).charAt(0);
+            
+            GameTile item = this.inventory.getItem(index);
+            char itemID = item.toString().charAt(0);
             
             switch(itemID){
                 case 'e':   break;
                     
-                case 'w':   gamer.addPlayerWater(50);
+                case 'w':   gamer.addPlayerWater(66);
                             mainWindow.setWaterBar(gamer.getPlayerWater());
                             inventory.deleteItem(index, mainWindow);
                             break;
                 
-                case 'k':   char itemColor = inventory.getItem(index).charAt(1);
+                case 'k':   char itemColor = ((KeyTile)item).getColorIndex();
                             boolean rightKey = level.openDoor(x, y, itemColor);
                             if (rightKey) {
                                 inventory.deleteItem(index, mainWindow);
@@ -133,21 +132,20 @@ class World {
                             }
                             break;
                 
-                case 's':   int[] dragonPos = level.nearDragon(x, y);
+                case '|':   int[] dragonPos = level.nearDragon(x, y);
                             int[] defaultPos = {-1, -1};
                             if (!Arrays.equals(dragonPos, defaultPos)){  
-                                int hp = Integer.parseInt(level.getTileIndex(dragonPos[0], dragonPos[1]).substring(1));
-                                int dm = Integer.parseInt(item.substring(1));
-                                if (level.killDragon(dragonPos[0], dragonPos[1], item)){
-                                    //inventory.deleteItem(index, mainWindow);
+                                int hp = ((DragonTile)this.level.getTile(dragonPos[0], dragonPos[1])).getHealthPoints();
+                                int dm = ((SwordTile)item).getDamage();
+                                if (level.killDragon(dragonPos[0], dragonPos[1], dm, hp)){
                                     mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You win!");
-                                    inventory.setSwordDamage(mainWindow, index);
+//                                    inventory.setSwordDamage(mainWindow, index);
                                     draw(mainWindow);
                                 }else{
                                     gamer.setPlayerHealth(dm - hp);
                                     mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You loose!");
                                     draw(mainWindow);
-                                    inventory.setSwordDamage(mainWindow, index);
+//                                    inventory.setSwordDamage(mainWindow, index);
                     
                             }
                             break;

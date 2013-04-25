@@ -3,33 +3,39 @@ package doom;
 class Events {
   
     //event-manager
-    public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager, Player gamer) {
-            char c = eventIndex.charAt(0);
+    public int eventManager (Gui window, GameTile eventGameTile, Inventory inventory, LevelManager levelManager, Player gamer) {
+            char c = eventGameTile.toString().charAt(0);
             switch (c){
-                case '$' : return "m" + moneyEvent(window);
-                case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
-                case '@' : gamer.setPlayerHealth(-400); return " ";
-                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return eventIndex.charAt(3) + "";
-                case 'w' : if (inventory.fillInventory(eventIndex, window)) {
-                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
-                                window.setEventLabel("You found a bottle of water!"); return " ";}
-                case 'k' : if (inventory.fillInventory(eventIndex, window)) {
-                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
-                                window.setEventLabel("You found a key!"); return " ";}
-                case 's' : if (inventory.fillInventory(eventIndex, window)) {
-                                window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
-                                window.setEventLabel("You found a sword!"); return " ";}
+                case '$' : moneyEvent(window, gamer); return 1;
+                case 't' : triggerEvent(window, ((DoorTrigger)eventGameTile).getTriggerPurpose()); return 1;
+                case '@' : gamer.setPlayerHealth(-400); return 1;
+                case '0' : levelManager.setCurrentLevelIndex(((WormTile)eventGameTile).getLevelIndex()); return ((WormTile)eventGameTile).getDestination();
+                case 'w' : if (inventory.fillInventory(eventGameTile, window)) {
+                                window.setEventLabel("You found a bottle of water!"); return 1; 
+                           } else {
+                                window.setEventLabel("Your Inventory is already filled!"); return 0;
+                           }
+                case 'k' : if (inventory.fillInventory(eventGameTile, window)) {
+                                window.setEventLabel("You found a key!"); return 1; 
+                           } else {
+                                window.setEventLabel("Your Inventory is already filled!"); return 0;
+                           }
+                case '|' : if (inventory.fillInventory(eventGameTile, window)) {
+                                window.setEventLabel("You found a sword!"); return 1; 
+                           } else {
+                                window.setEventLabel("Your Inventory is already filled!"); return 0;
+                           }
                 
-                default:    /*window.setVisibility(false); */return "e";
+                default  : return 1;
             }
     }
     
     //money-event
-    public int moneyEvent(Gui window){
+    public void moneyEvent(Gui window, Player gamer){
          double money = Math.random();
          int Pmoney = (int)((money *100) + 5);
          window.setEventLabel("You found "+ Pmoney +"$!");
-         return Pmoney;
+         gamer.setPlayerMoney(Pmoney);
     }
     
     //trigger-event
@@ -55,7 +61,7 @@ class Events {
             case '$': return true;
             case 'w': return true;
             case 'k': return true;
-            case 's': return true;
+            case '|': return true;
             default : return false;
         }
     }

@@ -124,6 +124,10 @@ class GameField {
             return XYArray;
         }
         
+        public GameTile getTile (int x, int y) {
+            return this.field[x][y];
+        }
+        
         //replace a GameTile with a EmptyTile
         public void tileConv(int x, int y) {
             this.field[x][y] = new EmptyTile(x, y);
@@ -186,12 +190,10 @@ class GameField {
         
         
         
-        public boolean killDragon(int x, int y, String item){
+        public boolean killDragon(int x, int y, int swordDamage, int dragonHealthpoints){
             boolean dragonKilled= false;
-            int damage = Integer.parseInt(item.substring(1));
-            int hp = Integer.parseInt(getTileIndex(x, y).substring(1));
             
-            if(damage >= hp){
+            if(swordDamage >= dragonHealthpoints){
                 dragonKilled = true;
                 for(int i = -1; i <= 1; i++){
                     tileConv(x + i, y);

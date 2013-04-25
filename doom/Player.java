@@ -101,16 +101,6 @@ class Player extends GameTile {
             return playerHealth;
         }
         
-        //set attributes of this player
-        public void setAttributes(String eventIndex) {
-            char index = eventIndex.charAt(0);
-            String value = eventIndex.substring(1, eventIndex.length());
-            switch (index) {
-                case 'm': setPlayerMoney(Integer.parseInt(value));
-                    break;
-            }
-        }
-
         //function to set the live status to dead
         public void die(){
             this.alive = false;
