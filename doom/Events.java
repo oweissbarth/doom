@@ -5,12 +5,11 @@ class Events {
     //event-manager
     public String eventManager (Gui window, String eventIndex, Inventory inventory, LevelManager levelManager, Player gamer) {
             char c = eventIndex.charAt(0);
-            System.out.println(eventIndex);
             switch (c){
                 case '$' : return "m" + moneyEvent(window);
                 case 't' : triggerEvent(window, eventIndex.charAt(1)); return " ";
                 case '@' : gamer.setPlayerHealth(-400); return " ";
-                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return " ";
+                case '0' : levelManager.setCurrentLevelIndex(Integer.parseInt(eventIndex.charAt(1) + "")); return eventIndex.charAt(3) + "";
                 case 'w' : if (inventory.fillInventory(eventIndex, window)) {
                                 window.setEventLabel("Your Inventory is already filled!"); return "yes"; } else {
                                 window.setEventLabel("You found a bottle of water!"); return " ";}

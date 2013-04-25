@@ -69,7 +69,6 @@ class World {
                     if (event.delEvent(eventIndex)) {
                         level.tileConv(x, y);
                     }
-                
                 //create the new Gamefield
                 if (event.refreshWorld(eventIndex)) {
                     this.level = levelManager.getLevel();
