@@ -59,6 +59,7 @@ class Player extends GameTile {
             this.playerMoney += n;
         }
         
+        @Override
         public void setXY (int x, int y) {
             super.setXY(x, y);
         }

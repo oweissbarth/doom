@@ -20,10 +20,9 @@ class World {
 	//checking the destination GameTile
 	public boolean moveCheck (int x, int y, int secX, int secY) {
 		boolean check = true;
-		String tileString = level.getTileString(x, y);
                           		
-		if (tileString.equals("#")) {check = this.level.checkWallMove(x, y, secX, secY);}
-                if (tileString.equals("+")) {check = false;}
+		if (level.getTile(x,y).getID() == 2) {check = this.level.checkWallMove(x, y, secX, secY);}
+                if (level.getTile(x,y).getID() == 4) {check = false;}
 
 		return check;
 	}
@@ -66,14 +65,14 @@ class World {
                              
                 //delete the event-GameTile
                 if (eventCombinedIndex == 1) {
-                    if (event.delEvent(eventGameTile.toString())) {
+                    if (event.delEvent(eventGameTile.getID())) {
                         level.tileConv(x, y);
                     }
                 }
                 //create the new Gamefield
-                if (event.refreshWorld(eventGameTile.toString())) {
+                if (eventGameTile.getID() == 10) {
                     this.level = levelManager.getLevel();
-                    int[] XYArray = this.level.getTileXY("0", eventCombinedIndex);
+                    int[] XYArray = this.level.getPortalDestinationXY(((WormTile)eventGameTile).getDestination());
                     this.gamer.setXY(XYArray[0], XYArray[1]);
                 }
                 
@@ -114,17 +113,17 @@ class World {
             int index = (Integer.parseInt(s))-1;
             
             GameTile item = this.inventory.getItem(index);
-            char itemID = item.toString().charAt(0);
+            int itemID = item.getID();
             
             switch(itemID){
-                case 'e':   break;
+                case 1:   break;
                     
-                case 'w':   gamer.addPlayerWater(66);
+                case 7:   gamer.addPlayerWater(66);
                             mainWindow.setWaterBar(gamer.getPlayerWater());
                             inventory.deleteItem(index, mainWindow);
                             break;
                 
-                case 'k':   char itemColor = ((KeyTile)item).getColorIndex();
+                case 9:   char itemColor = ((KeyTile)item).getColorIndex();
                             boolean rightKey = level.openDoor(x, y, itemColor);
                             if (rightKey) {
                                 inventory.deleteItem(index, mainWindow);
@@ -132,7 +131,7 @@ class World {
                             }
                             break;
                 
-                case '|':   int[] dragonPos = level.nearDragon(x, y);
+                case 8:   int[] dragonPos = level.nearDragon(x, y);
                             int[] defaultPos = {-1, -1};
                             if (!Arrays.equals(dragonPos, defaultPos)){  
                                 int hp = ((DragonTile)this.level.getTile(dragonPos[0], dragonPos[1])).getHealthPoints();

@@ -34,7 +34,7 @@ class Inventory {
     public boolean fillInventory (GameTile object, Gui mainWindow) {
         boolean indicator = false;
         for (int i = 0; i<this.inventory.length; i++) {
-            if (this.inventory[i].toString().equals("\u00A0") && !indicator) {
+            if ((this.inventory[i].getID() == 1) && !indicator) {
                 this.inventory[i] = object;
                 indicator = true;
             }
@@ -57,14 +57,14 @@ class Inventory {
     private Icon chooseIcon(GameTile item){
        Icon icon = null;
        
-       switch(item.toString().charAt(0)){
-           case 'e':    icon = new ImageIcon(getClass().getResource("/doom/icons/empty.png")); 
+       switch(item.getID()){
+           case 1:    icon = new ImageIcon(getClass().getResource("/doom/icons/empty.png")); 
                         break;
-           case 'w':    icon = new ImageIcon(getClass().getResource("/doom/icons/water.png")); 
+           case 7:    icon = new ImageIcon(getClass().getResource("/doom/icons/water.png")); 
                         break;
-           case 'k':    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ ((KeyTile)item).getColorIndex() +"Key.png"));
+           case 9:    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ ((KeyTile)item).getColorIndex() +"Key.png"));
                         break;
-           case '|':    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
+           case 8:    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
                         break;
        }
        
@@ -79,7 +79,7 @@ class Inventory {
       int ni=0;
       
       for(int oi= 0; oi<inventory.length; oi++){
-          if(!inventory[oi].toString().equals("\u00A0")){
+          if(inventory[oi].getID() != 1){
               newInventory[ni]=inventory[oi];
               ni++;
           } else {

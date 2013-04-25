@@ -31,22 +31,22 @@ class GameField {
                                                     break;
 					
                                         case '+' :  field[i][j] = new DoorTile(i,j); 
-                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    s = ((DoorTile)this.field[i][j]).setColor(i, j, width, s);
                                                     break;
 					
                                         case '$' :  field[i][j] = new MoneyTile(i,j);
                                                     break;
                                         
                                         case 't' :  field[i][j] = new DoorTrigger(i, j);
-                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    s = ((DoorTrigger)this.field[i][j]).setColor(i, j, width, s);
                                                     break;
                                         
                                         case 'k' :  field[i][j] = new KeyTile(i, j);
-                                                    s = this.field[i][j].setColor(i, j, width, s);
+                                                    s = ((KeyTile)this.field[i][j]).setColor(i, j, width, s);
                                                     break;
                                         
                                         case '0' :  field[i][j] = new WormTile(i, j); 
-                                                    s = this.field[i][j].setLevelIndex(i, j, width, s);
+                                                    s = ((WormTile)this.field[i][j]).setLevelIndex(i, j, width, s);
                                                     break;                                      
                                         case 'w' :  field[i][j] = new WaterTile(i, j);
                                                     break;
@@ -69,7 +69,7 @@ class GameField {
 		for (int i = 0; i<size; i++){
 			for(int j = 0; j<this.width; j++){
 				GameTile tile = field[i][j];
-				String sTile = tile.toString();
+				char sTile = tile.toChar();
 				s = s + sTile; 
 				
 			}
@@ -85,21 +85,8 @@ class GameField {
 	public int getWidth (){
 		return this.width;
 	}
-
-	//convert a GameTile into a string
-	public String getTileString(int x, int y) {
-		GameTile tile = this.field[x][y];
-		String s = tile.toString();
-		return s;
-	}
         
-        public String getTileIndex(int x, int y) {
-		GameTile tile = this.field[x][y];
-		String s = tile.getIndex();
-		return s;
-	}
-        
-        public int[] getTileXY (String index, int destination ){
+        public int[] getPortalDestinationXY (int destination){
             int[] XYArray = new int[2];
             boolean check = true;
             
@@ -107,11 +94,10 @@ class GameField {
                 for (int j = 0; (j < this.width)  && (check); j++) {
                     
                     GameTile tile = this.field[i][j];
-                    String tileIndex = tile.getIndex().charAt(0) + "";
                     
-                    if (tileIndex.equals(index)){
-                        //int tileValue = Integer.parseInt(tile.getIndex().charAt(1) + "");
-                        int portalIndex = Integer.parseInt(tile.getIndex().charAt(2) + "");
+                    if (tile.getID() == 10){
+                        
+                        int portalIndex = ((WormTile)tile).getPortalIndex();
                        
                         if (destination == portalIndex) {
                             XYArray[0] = tile.getX();
@@ -135,21 +121,21 @@ class GameField {
         
         //open a door
         public boolean openDoor (int x, int y, char color) {
-                String position = getTileIndex(x, y).charAt(0)+"";
+                GameTile currentTile = this.field[x][y];
                 boolean bool = false;
                 int[] xField = {x-1, x+1, x, x};
                 int[] yField = {y, y, y-1, y+1};
                 
-                if (position.equals("t")) {
+                if ((currentTile.getID() == 3)&&(((DoorTrigger)currentTile).getTriggerPurpose() != '@' )) {
                     for (int i=0; i<4; i++) {
-                        String nearTile = getTileIndex(xField[i], yField[i]);
-                        if (nearTile.equals("+"+color)) {
+                        currentTile = getTile(xField[i], yField[i]);
+                        if ((currentTile.getID()== 4)&&(((DoorTile)currentTile).getColorIndex() == color)) {
                             tileConv(xField[i], yField[i]);
                             tileConv(x, y);
                             bool = true;
                         }
                     }
-                } 
+                }
                 return bool;
         }
         
@@ -157,7 +143,7 @@ class GameField {
             if ((x == 0)||(x == 29)||(y == 0)||(y ==89)) {
                 return false;
             } else {
-                if (getTileIndex(secX, secY).equals("e")) {
+                if (getTile(secX, secY).getID() == 1) {
                     tileConv(x,y);
                     this.field[secX][secY] = new WallTile(secX, secY);
                     return true;
@@ -172,14 +158,14 @@ class GameField {
             int dragonPosY = -1;
             
             for(int i = -1; i<=1; i++){
-                if (getTileIndex(i + x, y).charAt(0) == '@'){
+                if (getTile(i + x, y).getID() == 5){
                     dragonPosX = i+x;
                     dragonPosY = y;
                 }
             }
             
             for(int i = -1; i<=1; i++){
-                if(getTileIndex(x, i+y).charAt(0) == '@'){
+                if(getTile(x, i+y).getID() == 5){
                     dragonPosX = x;
                     dragonPosY = i+y;
                 }
