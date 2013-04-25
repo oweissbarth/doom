@@ -18,11 +18,11 @@ class World {
         
         
 	//checking the destination GameTile
-	public boolean moveCheck (int x, int y) {
+	public boolean moveCheck (int x, int y, int secX, int secY) {
 		boolean check = true;
 		String tileString = level.getTileString(x, y);
-		
-		if (tileString.equals("#")) {check = false;}
+                          		
+		if (tileString.equals("#")) {check = this.level.checkWallMove(x, y, secX, secY);}
                 if (tileString.equals("+")) {check = false;}
 
 		return check;
@@ -33,13 +33,13 @@ class World {
                 int posX = this.gamer.getX();
 		int posY = this.gamer.getY();
 			switch (key.charAt(0)) {
-				case 'w' : if (moveCheck(posX-1, posY)) {this.gamer.moveUp();}
+				case 'w' : if (moveCheck(posX-1, posY, posX-2, posY)) {this.gamer.moveUp();}
 					break;
-				case 'a' : if (moveCheck(posX, posY-1)) {this.gamer.moveLeft();}
+				case 'a' : if (moveCheck(posX, posY-1, posX, posY-2)) {this.gamer.moveLeft();}
 					break;
-				case 's' : if (moveCheck(posX+1, posY)) {this.gamer.moveDown();}
+				case 's' : if (moveCheck(posX+1, posY, posX+2, posY)) {this.gamer.moveDown();}
 					break;
-				case 'd' : if (moveCheck(posX, posY+1)) {this.gamer.moveRight();}
+				case 'd' : if (moveCheck(posX, posY+1, posX, posY+2)) {this.gamer.moveRight();}
 					break;
 			}
                         gamer.reducePlayerWater(3);

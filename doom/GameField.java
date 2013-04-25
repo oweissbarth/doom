@@ -149,6 +149,20 @@ class GameField {
                 return bool;
         }
         
+        public boolean checkWallMove (int x, int y, int secX, int secY) {
+            if ((x == 0)||(x == 29)||(y == 0)||(y ==89)) {
+                return false;
+            } else {
+                if (getTileIndex(secX, secY).equals("e")) {
+                    tileConv(x,y);
+                    this.field[secX][secY] = new WallTile(secX, secY);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        
         public int[] nearDragon(int x, int y){
             int dragonPosX = -1;
             int dragonPosY = -1;
