@@ -74,21 +74,14 @@ class Inventory {
 
     //Deletes an item from the inventory and rearranges the items
     public void deleteItem(int index, Gui mainWindow){
-      inventory[index] = new EmptyTile(0, 0);
-      GameTile[] newInventory = new GameTile[8];
-      int ni=0;
-      
-      for(int oi= 0; oi<inventory.length; oi++){
-          if(inventory[oi].getID() != 1){
-              newInventory[ni]=inventory[oi];
-              ni++;
-          } else {
-              newInventory[ni] = new EmptyTile(0, 0);
-              ni++;
+      this.inventory[index] = new EmptyTile(0, 0);
+
+      for(int i= 0; i<7; i++){
+          if(this.inventory[i].getID() == 1){
+              this.inventory[i] = this.inventory[i+1];
+              this.inventory[i+1] = new EmptyTile(0, 0);
           }
       }
-      
-      inventory = newInventory;
       setInventoryIcons(mainWindow);
    }
 }  
