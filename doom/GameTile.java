@@ -183,18 +183,18 @@ class DoorTile extends GameTile {
 }
 
 //Door trigger
-class DoorTrigger extends GameTile {
+class TriggerTile extends GameTile {
     
         private int ID;
-        private char colorIndex;
+        private char index;
 
-	public DoorTrigger(int x, int y) {
+	public TriggerTile(int x, int y) {
             this.ID = 3;
             super.setXY(x,y);
 	}
         
-        public String setColor(int x, int y, int n, String s) {
-            this.colorIndex = s.charAt((x*n)+y+2);
+        public String setIndex(int x, int y, int n, String s) {
+            this.index = s.charAt((x*n)+y+2);
             s = s.substring(0,(x*n)+y) + s.substring((x*n)+y+3);
             return s;
         }
@@ -210,7 +210,7 @@ class DoorTrigger extends GameTile {
         }
         
         public char getTriggerPurpose (){
-            return this.colorIndex;
+            return this.index;
         }
 }
 
@@ -247,14 +247,14 @@ class KeyTile extends GameTile {
 }
 
 //Wormehole GameTile
-class WormTile extends GameTile {
+class PortalTile extends GameTile {
         
         private int ID;
         private int levelIndex;
         private int portalIndex;
         private int destination;
 
-	public WormTile(int x, int y) {
+	public PortalTile(int x, int y) {
                 this.ID = 10;
 		super.setXY(x,y);
 	}

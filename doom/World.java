@@ -72,7 +72,7 @@ class World {
                 //create the new Gamefield
                 if (eventGameTile.getID() == 10) {
                     this.level = levelManager.getLevel();
-                    int[] XYArray = this.level.getPortalDestinationXY(((WormTile)eventGameTile).getDestination());
+                    int[] XYArray = this.level.getPortalDestinationXY(((PortalTile)eventGameTile).getDestination());
                     this.gamer.setXY(XYArray[0], XYArray[1]);
                 }
                 

@@ -8,9 +8,9 @@ class Events {
 
             switch (tileID){
                 case 6 : moneyEvent(window, gamer); return 1;
-                case 3 : triggerEvent(window, ((DoorTrigger)eventGameTile).getTriggerPurpose()); return 1;
+                case 3 : triggerEvent(window, ((TriggerTile)eventGameTile).getTriggerPurpose()); return 1;
                 case 5 : gamer.setPlayerHealth(-400); return 1;
-                case 10 : levelManager.setCurrentLevelIndex(((WormTile)eventGameTile).getLevelIndex()); return 1;
+                case 10 : levelManager.setCurrentLevelIndex(((PortalTile)eventGameTile).getLevelIndex()); return 1;
                 case 7 : if (inventory.fillInventory(eventGameTile, window)) {
                                 window.setEventLabel("You found a bottle of water!"); return 1; 
                            } else {

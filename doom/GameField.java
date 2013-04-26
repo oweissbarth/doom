@@ -37,16 +37,16 @@ class GameField {
                                         case '$' :  field[i][j] = new MoneyTile(i,j);
                                                     break;
                                         
-                                        case 't' :  field[i][j] = new DoorTrigger(i, j);
-                                                    s = ((DoorTrigger)this.field[i][j]).setColor(i, j, width, s);
+                                        case 't' :  field[i][j] = new TriggerTile(i, j);
+                                                    s = ((TriggerTile)this.field[i][j]).setIndex(i, j, width, s);
                                                     break;
                                         
                                         case 'k' :  field[i][j] = new KeyTile(i, j);
                                                     s = ((KeyTile)this.field[i][j]).setColor(i, j, width, s);
                                                     break;
                                         
-                                        case '0' :  field[i][j] = new WormTile(i, j); 
-                                                    s = ((WormTile)this.field[i][j]).setLevelIndex(i, j, width, s);
+                                        case '0' :  field[i][j] = new PortalTile(i, j); 
+                                                    s = ((PortalTile)this.field[i][j]).setLevelIndex(i, j, width, s);
                                                     break;                                      
                                         case 'w' :  field[i][j] = new WaterTile(i, j);
                                                     break;
@@ -62,6 +62,7 @@ class GameField {
 	}
 
 	//convert GameFieldArray to a string
+        @Override
 	public String toString() {
 		String s="";
 		int size = this.height;
@@ -97,7 +98,7 @@ class GameField {
                     
                     if (tile.getID() == 10){
                         
-                        int portalIndex = ((WormTile)tile).getPortalIndex();
+                        int portalIndex = ((PortalTile)tile).getPortalIndex();
                        
                         if (destination == portalIndex) {
                             XYArray[0] = tile.getX();
@@ -126,7 +127,7 @@ class GameField {
                 int[] xField = {x-1, x+1, x, x};
                 int[] yField = {y, y, y-1, y+1};
                 
-                if ((currentTile.getID() == 3)&&(((DoorTrigger)currentTile).getTriggerPurpose() != '@' )) {
+                if ((currentTile.getID() == 3)&&(((TriggerTile)currentTile).getTriggerPurpose() != '@' )) {
                     for (int i=0; i<4; i++) {
                         currentTile = getTile(xField[i], yField[i]);
                         if ((currentTile.getID()== 4)&&(((DoorTile)currentTile).getColorIndex() == color)) {
