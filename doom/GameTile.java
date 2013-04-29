@@ -128,11 +128,17 @@ class DragonTile extends GameTile {
         
         private int ID;
         private int healthPoints;
+        private int damage;
+        private int critChance;
+        private float critDamageFactor;
     
 	public DragonTile(int x, int y) {
             this.ID = 5;
             super.setXY(x,y);
-            healthPoints = (int) (Math.random() * 50);
+            this.damage = 500;
+            this.critChance = 10;
+            this.critDamageFactor = (float)1.5;
+            this.healthPoints = 500;
 	}
 
         @Override
@@ -145,8 +151,24 @@ class DragonTile extends GameTile {
             return this.ID;
         }
         
-        public int getHealthPoints(){
+        public int getDragonHealthPoints(){
             return healthPoints;
+        }
+        
+        public int getDragonCritChance(){
+            return this.critChance;
+        }
+        
+        public int getDragonDamage(){
+            return this.damage;
+        }
+        
+        public float getDragonCritDamageFactor(){
+            return this.critDamageFactor;
+        }
+        
+        public void setDragonHealthPoints(int value){
+            this.healthPoints = value;
         }
 }
 
@@ -294,11 +316,15 @@ class SwordTile extends GameTile{
     
     private int ID;
     private int damage;
+    private int critChance;
+    private int critDamageFactor;
     
     public SwordTile(int x, int y) {
             this.ID = 8;
             super.setXY(x,y);
-            damage = (int)(Math.random() * 200);
+            this.damage = 300;
+            this.critChance = 5;
+            this.critDamageFactor = 2;
     }
 
     @Override
@@ -313,6 +339,14 @@ class SwordTile extends GameTile{
     
     public int getDamage(){
         return damage;
+    }
+    
+    public int getCritChance(){
+        return this.critChance;
+    }
+    
+    public int getCritDamageFactor(){
+        return this.critDamageFactor;
     }
 }
 

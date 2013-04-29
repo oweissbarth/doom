@@ -131,24 +131,19 @@ class World {
                             }
                             break;
                 
-                case 8:   int[] dragonPos = level.nearDragon(x, y);
+                case 8:     int[] dragonPos = level.nearDragon(x, y);
                             int[] defaultPos = {-1, -1};
-                            if (!Arrays.equals(dragonPos, defaultPos)){  
-                                int hp = ((DragonTile)this.level.getTile(dragonPos[0], dragonPos[1])).getHealthPoints();
-                                int dm = ((SwordTile)item).getDamage();
-                                if (level.killDragon(dragonPos[0], dragonPos[1], dm, hp)){
-                                    mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You win!");
-//                                    inventory.setSwordDamage(mainWindow, index);
+                            if (!Arrays.equals(dragonPos, defaultPos)){
+                                if(level.fight(dragonPos, item, gamer, mainWindow)){
+                                    for(int i = -1; i <= 1; i++){
+                                            level.tileConv(dragonPos[0] + i, dragonPos[1]);
+                                            level.tileConv(dragonPos[0], dragonPos[1] + i);
+                                    }
                                     draw(mainWindow);
-                                }else{
-                                    gamer.setPlayerHealth(dm - hp);
-                                    mainWindow.setEventLabel("Dragon had "+ hp + "Hp. You did " + dm + " Damage -> You loose!");
-                                    draw(mainWindow);
-//                                    inventory.setSwordDamage(mainWindow, index);
-                    
+                                }
                             }
                             break;
-                            }
+                            
             }   
     }
 }

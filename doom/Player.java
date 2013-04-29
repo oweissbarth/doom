@@ -5,7 +5,9 @@ class Player extends GameTile {
         private int playerMoney;
         private int playerWater;
         private int playerHealth;
-        private boolean alive = true;
+        private int critChance; //chance of landing a critical hit in percent
+        private int critDamageAddition; //Additional Critical Damage caused by Player state
+        private boolean alive;
         
         
 	//constructor
@@ -14,6 +16,9 @@ class Player extends GameTile {
                 this.playerMoney = 0;
                 this.playerWater = 1503;
                 this.playerHealth = 2000;
+                this.critChance = 5;
+                this.critDamageAddition=0;
+                this.alive = true;
 	}
 	
 	//add the player to the canvas
@@ -101,6 +106,18 @@ class Player extends GameTile {
         public int getPlayerHealth(){
             return playerHealth;
         }
+        
+        public int getPlayerCritChance(){
+            return critChance;
+        }
+        
+        public int getPlayerAdditionalDamage(){
+            return this.critDamageAddition;
+        }
+        
+        public void setPlayerCritChance(int n){
+            critChance = n;
+        } 
         
         //function to set the live status to dead
         public void die(){

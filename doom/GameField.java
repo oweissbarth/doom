@@ -174,20 +174,74 @@ class GameField {
         int[] pos = {dragonPosX, dragonPosY};
         return pos;
         }
+
         
-        
-        
-        public boolean killDragon(int x, int y, int swordDamage, int dragonHealthpoints){
-            boolean dragonKilled= false;
+        public boolean fight(int[] DragonPos, GameTile weapon, Player player, Gui mainWindow){
+            boolean killed = false;
+            GameTile dragon = field[DragonPos[0]][DragonPos[1]];
             
-            if(swordDamage >= dragonHealthpoints){
-                dragonKilled = true;
-                for(int i = -1; i <= 1; i++){
-                    tileConv(x + i, y);
-                    tileConv(x, y + i);
-                }
+            //Player information
+            int PlayerCritChance = player.getPlayerCritChance();
+            int PlayerAdditionalDamage = player.getPlayerAdditionalDamage();
+            int PlayerHealthPoints = player.getPlayerHealth();
+            
+            //Weapon information
+            int SwordDamage = ((SwordTile)weapon).getDamage();
+            int SwordCritChance = ((SwordTile)weapon).getCritChance();
+            float SwordCritDamageFactor = ((SwordTile)weapon).getCritDamageFactor();
+            
+            //Dragon information
+            int DragonHealthPoints = ((DragonTile)dragon).getDragonHealthPoints();
+            int DragonDamage = ((DragonTile)dragon).getDragonDamage();
+            int DragonCritChance = ((DragonTile)dragon).getDragonCritChance();
+            float DragonCritDamageFactor = ((DragonTile)dragon).getDragonCritDamageFactor();
+            
+            //calculating fight specific values
+            boolean criticalAttack = (Math.random()*100) > (100- (PlayerCritChance+SwordCritChance));
+            
+            int PlayerDamage;
+            if(criticalAttack){
+                PlayerDamage = (int)((SwordDamage * SwordCritDamageFactor)+ PlayerAdditionalDamage);
+                mainWindow.setEventLabel("You landed a critical hit!");
+            }else{
+                PlayerDamage = SwordDamage;
             }
-            return dragonKilled;
+            
+            //Fight Start -> Attack
+            DragonHealthPoints -= PlayerDamage;
+            mainWindow.setEventLabel("You dealt "+ PlayerDamage + " Damage Points!");
+            if(DragonHealthPoints <= 0){
+                killed = true;
+                mainWindow.setEventLabel("You killed the Dragon!");
+                player.setPlayerHealth(0);
+                mainWindow.setHealthBar(PlayerHealthPoints);
+                return killed;
             }
+            mainWindow.setEventLabel("Dragon still has " + DragonHealthPoints + "Hp!");
+            mainWindow.setEventLabel("Dragon is starting a counter attack!");
+            
+            // -> Counter Attack
+            criticalAttack = (Math.random()*100) > (100- (DragonCritChance));
+            
+            if(criticalAttack){
+                DragonDamage =(int)(DragonDamage * DragonCritDamageFactor);
+                mainWindow.setEventLabel("Dragon landed a critical hit!");
+            }else{
+                DragonDamage += 0;
+            }
+            
+            //Fight Start
+            
+            PlayerHealthPoints -= DragonDamage;
+            mainWindow.setEventLabel("Dragon dealt " + DragonDamage + " Damage Points!");
+            if(PlayerHealthPoints<=0){
+                mainWindow.setEventLabel("You died!");
+                player.die();
+            }
+            ((DragonTile)dragon).setDragonHealthPoints(DragonHealthPoints);
+            player.setPlayerHealth((PlayerHealthPoints - player.getPlayerHealth()));
+            mainWindow.setHealthBar(PlayerHealthPoints);
+            return killed;
+        }
 }
 
