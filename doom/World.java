@@ -142,6 +142,9 @@ class World {
                                     draw(mainWindow);
                                 }
                             }
+                            if(((SwordTile)item).getSwordState() <= 0){
+                                inventory.deleteItem(index, mainWindow);
+                            }
                             break;
                             
             }   

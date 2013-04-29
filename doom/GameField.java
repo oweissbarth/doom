@@ -189,6 +189,7 @@ class GameField {
             int SwordDamage = ((SwordTile)weapon).getDamage();
             int SwordCritChance = ((SwordTile)weapon).getCritChance();
             float SwordCritDamageFactor = ((SwordTile)weapon).getCritDamageFactor();
+            int SwordState = ((SwordTile)weapon).getSwordState();
             
             //Dragon information
             int DragonHealthPoints = ((DragonTile)dragon).getDragonHealthPoints();
@@ -201,7 +202,7 @@ class GameField {
             
             int PlayerDamage;
             if(criticalAttack){
-                PlayerDamage = (int)((SwordDamage * SwordCritDamageFactor)+ PlayerAdditionalDamage);
+                PlayerDamage = (int)((SwordDamage * SwordCritDamageFactor * SwordState/100)+ PlayerAdditionalDamage);
                 mainWindow.setEventLabel("You landed a critical hit!");
             }else{
                 PlayerDamage = SwordDamage;
@@ -210,6 +211,7 @@ class GameField {
             //Fight Start -> Attack
             DragonHealthPoints -= PlayerDamage;
             mainWindow.setEventLabel("You dealt "+ PlayerDamage + " Damage Points!");
+            ((SwordTile)weapon).setSwordState(SwordState - 1);
             if(DragonHealthPoints <= 0){
                 killed = true;
                 mainWindow.setEventLabel("You killed the Dragon!");

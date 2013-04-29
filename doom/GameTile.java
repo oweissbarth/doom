@@ -318,6 +318,7 @@ class SwordTile extends GameTile{
     private int damage;
     private int critChance;
     private int critDamageFactor;
+    private int state;
     
     public SwordTile(int x, int y) {
             this.ID = 8;
@@ -325,6 +326,7 @@ class SwordTile extends GameTile{
             this.damage = 300;
             this.critChance = 5;
             this.critDamageFactor = 2;
+            this.state=100;
     }
 
     @Override
@@ -347,6 +349,14 @@ class SwordTile extends GameTile{
     
     public int getCritDamageFactor(){
         return this.critDamageFactor;
+    }
+    
+    public int getSwordState(){
+        return this.state;
+    }
+    
+    public void setSwordState(int n){
+        this.state = n;
     }
 }
 
