@@ -76,7 +76,7 @@ class Player extends GameTile {
         //Reduces Players water if alive. Kill Player if water=0
         public void reducePlayerWater(int n){
             this.playerWater -= n;
-            if (getPlayerWater() > 0 && alive()){            
+            if ((getPlayerWater() > 0) && alive()){
             }else{
                 GameOver gameOver = new GameOver();
                 gameOver.setVisible(true);
@@ -90,13 +90,14 @@ class Player extends GameTile {
         }
         
         public int getPlayerWater(){
-            return playerWater;
+            return this.playerWater;
         }
         
         public void setPlayerHealth(int n){
-           if(playerHealth>0){
-               this.playerHealth+=n;
-           }else{
+           
+           this.playerHealth+=n;   
+           
+           if(this.playerHealth <= 0){
                GameOver gameOver = new GameOver();
                gameOver.setVisible(true);
                die();

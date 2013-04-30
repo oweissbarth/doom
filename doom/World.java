@@ -47,10 +47,6 @@ class World {
 
 	//main-print-function
 	public void draw (Gui mainWindow){
-		//Check if Player is alive
-                if (!gamer.alive()){
-                    mainWindow.dispose();
-                }
           
                 Events event = new Events();
                 //get current position of the player
@@ -101,6 +97,10 @@ class World {
 		for(int i=0; i<(level.getHeight()); i++) {
 			outString = outString + ( sub2.substring(((level.getWidth())*i), ((level.getWidth())*(i+1))) ) + "<br/>";
 		}
+                
+                if (!this.gamer.alive()){
+                    mainWindow.dispose();
+                }
                 
                 //draw-function
                 mainWindow.setMainLabel(outString);               
