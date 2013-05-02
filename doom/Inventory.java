@@ -36,18 +36,6 @@ class Inventory {
         return this.inventory[i];
     }
     
-//    //Setter for Sword damage
-//    public void setSwordDamage(Gui mainWindow, int index){
-//        int damage = Integer.parseInt(inventory[index].substring(1));
-//        damage -= 20;
-//        inventory[index]="s"+ damage;
-//        if (Integer.parseInt(inventory[index].substring(1))<=0){
-//            deleteItem(index, mainWindow);
-//        }
-//        setInventoryIcons(mainWindow);
-//    }
-    
-    
     public boolean fillInventory (GameTile object, Gui mainWindow) {
         boolean indicator = false;
         for (int i = 0; i<this.inventory.length; i++) {
