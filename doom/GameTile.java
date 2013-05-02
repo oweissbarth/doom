@@ -317,16 +317,49 @@ class WeaponTile extends GameTile{
     private int ID;
     private int damage;
     private int critChance;
-    private int critDamageFactor;
+    private float critDamageFactor;
     private int state;
+    private String name;
+    private int weaponIdentifier;
     
-    public WeaponTile(int x, int y) {
-            this.ID = 8;
-            super.setXY(x,y);
-            this.damage = 300;
-            this.critChance = 5;
-            this.critDamageFactor = 2;
-            this.state=100;
+    
+    public WeaponTile(int x, int y, int weaponIdentifier) {
+        super.setXY(x, y);
+        this.ID = 8;
+        
+        switch(weaponIdentifier){
+            case 1:     this.name = "blunt sword";
+                        this.weaponIdentifier = 1;
+                        this.damage = 150;
+                        this.critChance = 5;
+                        this.critDamageFactor = 2;
+                        this.state=100;
+                        break;
+            
+            case 2:     this.name = "Moon Blade";
+                        this.weaponIdentifier = 2;
+                        this.damage = 200;
+                        this.critChance = 15;
+                        this.critDamageFactor = (float)2.5;
+                        this.state=100;
+                        break;
+                
+            case 3:     this.name = "Excalibur";
+                        this.weaponIdentifier = 3;
+                        this.damage = 500;
+                        this.critChance = 7;
+                        this.critDamageFactor = (float)1.5;
+                        this.state=100;
+                        break;
+        }
+        
+            
+        
+        
+        
+        
+       
+            
     }
 
     @Override
@@ -347,12 +380,24 @@ class WeaponTile extends GameTile{
         return this.critChance;
     }
     
-    public int getCritDamageFactor(){
+    public float getCritDamageFactor(){
         return this.critDamageFactor;
     }
     
     public int getWeaponState(){
         return this.state;
+    }
+    
+    public String getWeaponName(){
+        return this.name;
+    }
+    
+    public int getWeaponIdentifier(){
+        return this.weaponIdentifier;
+    }
+    
+    public void setWeaponName(String newName){
+        this.name = newName;
     }
     
     public void setWeaponState(int n){

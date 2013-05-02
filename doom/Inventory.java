@@ -11,7 +11,8 @@ class Inventory {
     private Icon yKey;
     private Icon rKey;
     private Icon gKey;
-    private Icon weapon;
+    private Icon moonBladeWeapon;
+    private Icon bluntSwordWeapon;
    
     
     //Constructor to create 
@@ -26,7 +27,8 @@ class Inventory {
     yKey = new ImageIcon(getClass().getResource("/doom/icons/yKey.png"));
     rKey = new ImageIcon(getClass().getResource("/doom/icons/rKey.png"));
     gKey = new ImageIcon(getClass().getResource("/doom/icons/gKey.png"));
-    weapon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));  
+    bluntSwordWeapon = new ImageIcon(getClass().getResource("/doom/icons/bluntSwordWeapon.png"));
+    moonBladeWeapon = new ImageIcon(getClass().getResource("/doom/icons/moonBladeWeapon.png"));
         
         
     }
@@ -71,7 +73,11 @@ class Inventory {
                             case 'r' : return rKey;
                             case 'g' : return gKey;
                         }
-           case 8:    return weapon;
+           case 8:      switch(((WeaponTile)item).getWeaponIdentifier()){
+                            case 1   : return bluntSwordWeapon;
+                            case 2   : return moonBladeWeapon;
+                            //case 3   : return excaliburWeapon;
+           }
        }
       return icon;
     }
