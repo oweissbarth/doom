@@ -55,7 +55,7 @@ class LevelManager {
      * Trigger -> t(color | dragon)
      * Door -> +(color)
      * Money -> $
-     * Sword -> |
+     * Weapon -> |
      * Wall -> #
      * Dragon -> 'at'
      * Water -> w

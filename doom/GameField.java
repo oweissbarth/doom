@@ -51,7 +51,7 @@ class GameField {
                                         case 'w' :  field[i][j] = new WaterTile(i, j);
                                                     break;
                                         
-                                        case '|' :  field[i][j] = new SwordTile(i, j); 
+                                        case '|' :  field[i][j] = new WeaponTile(i, j); 
                                                     break;
 					
                                         default :   field[i][j] = new GameTile();
@@ -186,10 +186,10 @@ class GameField {
             int PlayerHealthPoints = player.getPlayerHealth();
             
             //Weapon information
-            int SwordDamage = ((SwordTile)weapon).getDamage();
-            int SwordCritChance = ((SwordTile)weapon).getCritChance();
-            float SwordCritDamageFactor = ((SwordTile)weapon).getCritDamageFactor();
-            int SwordState = ((SwordTile)weapon).getSwordState();
+            int WeaponDamage = ((WeaponTile)weapon).getDamage();
+            int WeaponCritChance = ((WeaponTile)weapon).getCritChance();
+            float WeaponCritDamageFactor = ((WeaponTile)weapon).getCritDamageFactor();
+            int WeaponState = ((WeaponTile)weapon).getWeaponState();
             
             //Dragon information
             int DragonHealthPoints = ((DragonTile)dragon).getDragonHealthPoints();
@@ -198,20 +198,20 @@ class GameField {
             float DragonCritDamageFactor = ((DragonTile)dragon).getDragonCritDamageFactor();
             
             //calculating fight specific values
-            boolean criticalAttack = (Math.random()*100) > (100- (PlayerCritChance+SwordCritChance));
+            boolean criticalAttack = (Math.random()*100) > (100- (PlayerCritChance+WeaponCritChance));
             
             int PlayerDamage;
             if(criticalAttack){
-                PlayerDamage = (int)((SwordDamage * SwordCritDamageFactor * SwordState/100)+ PlayerAdditionalDamage);
+                PlayerDamage = (int)((WeaponDamage * WeaponCritDamageFactor * WeaponState/100)+ PlayerAdditionalDamage);
                 mainWindow.setEventLabel("You landed a critical hit!");
             }else{
-                PlayerDamage = SwordDamage;
+                PlayerDamage = WeaponDamage;
             }
             
             //Fight Start -> Attack
             DragonHealthPoints -= PlayerDamage;
             mainWindow.setEventLabel("You dealt "+ PlayerDamage + " Damage Points!");
-            ((SwordTile)weapon).setSwordState(SwordState - 1);
+            ((WeaponTile)weapon).setWeaponState(WeaponState - 1);
             if(DragonHealthPoints <= 0){
                 killed = true;
                 mainWindow.setEventLabel("You killed the Dragon!");

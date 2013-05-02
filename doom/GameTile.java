@@ -312,7 +312,7 @@ class PortalTile extends GameTile {
         }
 }
 
-class SwordTile extends GameTile{
+class WeaponTile extends GameTile{
     
     private int ID;
     private int damage;
@@ -320,7 +320,7 @@ class SwordTile extends GameTile{
     private int critDamageFactor;
     private int state;
     
-    public SwordTile(int x, int y) {
+    public WeaponTile(int x, int y) {
             this.ID = 8;
             super.setXY(x,y);
             this.damage = 300;
@@ -351,11 +351,11 @@ class SwordTile extends GameTile{
         return this.critDamageFactor;
     }
     
-    public int getSwordState(){
+    public int getWeaponState(){
         return this.state;
     }
     
-    public void setSwordState(int n){
+    public void setWeaponState(int n){
         this.state = n;
     }
 }

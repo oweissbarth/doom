@@ -11,7 +11,7 @@ class Inventory {
     private Icon yKey;
     private Icon rKey;
     private Icon gKey;
-    private Icon sword;
+    private Icon weapon;
    
     
     //Constructor to create 
@@ -26,7 +26,7 @@ class Inventory {
     yKey = new ImageIcon(getClass().getResource("/doom/icons/yKey.png"));
     rKey = new ImageIcon(getClass().getResource("/doom/icons/rKey.png"));
     gKey = new ImageIcon(getClass().getResource("/doom/icons/gKey.png"));
-    sword = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));  
+    weapon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));  
         
         
     }
@@ -83,7 +83,7 @@ class Inventory {
                             case 'r' : return rKey;
                             case 'g' : return gKey;
                         }
-           case 8:    return sword;
+           case 8:    return weapon;
        }
       return icon;
     }

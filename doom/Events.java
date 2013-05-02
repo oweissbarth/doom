@@ -22,7 +22,7 @@ class Events {
                                 window.setEventLabel("Your Inventory is already filled!"); return 0;
                            }
                 case 8 : if (inventory.fillInventory(eventGameTile, window)) {
-                                window.setEventLabel("You found a sword!"); return 1; 
+                                window.setEventLabel("You found a weapon!"); return 1; 
                            } else {
                                 window.setEventLabel("Your Inventory is already filled!"); return 0;
                            }
