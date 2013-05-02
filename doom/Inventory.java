@@ -5,6 +5,14 @@ import javax.swing.ImageIcon;
 
 class Inventory {
     private GameTile[] inventory;
+    private Icon empty;
+    private Icon water;
+    private Icon bKey;
+    private Icon yKey;
+    private Icon rKey;
+    private Icon gKey;
+    private Icon sword;
+   
     
     //Constructor to create 
     public Inventory () {
@@ -12,6 +20,15 @@ class Inventory {
         for (int i = 0; i<this.inventory.length; i++) {
             this.inventory[i] = new EmptyTile(0, 0);
         }
+    empty = new ImageIcon(getClass().getResource("/doom/icons/empty.png"));
+    water = new ImageIcon(getClass().getResource("/doom/icons/water.png"));
+    bKey = new ImageIcon(getClass().getResource("/doom/icons/bKey.png"));
+    yKey = new ImageIcon(getClass().getResource("/doom/icons/yKey.png"));
+    rKey = new ImageIcon(getClass().getResource("/doom/icons/rKey.png"));
+    gKey = new ImageIcon(getClass().getResource("/doom/icons/gKey.png"));
+    sword = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));  
+        
+        
     }
     
    //Getter for Inventory Item
@@ -58,18 +75,18 @@ class Inventory {
        Icon icon = null;
        
        switch(item.getID()){
-           case 1:    icon = new ImageIcon(getClass().getResource("/doom/icons/empty.png")); 
-                        break;
-           case 7:    icon = new ImageIcon(getClass().getResource("/doom/icons/water.png")); 
-                        break;
-           case 9:    icon = new ImageIcon(getClass().getResource("/doom/icons/"+ ((KeyTile)item).getColorIndex() +"Key.png"));
-                        break;
-           case 8:    icon = new ImageIcon(getClass().getResource("/doom/icons/sword.png"));
-                        break;
+           case 1:    return empty; 
+           case 7:    return water;
+           case 9:      switch(((KeyTile)item).getColorIndex()){
+                            case 'b' : return bKey;
+                            case 'y' : return yKey;
+                            case 'r' : return rKey;
+                            case 'g' : return gKey;
+                        }
+           case 8:    return sword;
        }
-       
-       return icon;
-   }
+      return icon;
+    }
 
 
     //Deletes an item from the inventory and rearranges the items
