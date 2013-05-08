@@ -51,7 +51,7 @@ class GameField {
                                         case 'w' :  field[i][j] = new WaterTile(i, j);
                                                     break;
                                         
-                                        case '|' :  field[i][j] = new WeaponTile(i, j, 2); 
+                                        case '|' :  field[i][j] = new WeaponTile(i, j, 1); 
                                                     break;
 					
                                         default :   field[i][j] = new GameTile();

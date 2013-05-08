@@ -49,10 +49,8 @@ public class Gui extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Doom");
         setBackground(new java.awt.Color(102, 102, 102));
-        setMaximumSize(new java.awt.Dimension(1000, 760));
         setMinimumSize(new java.awt.Dimension(1000, 760));
         setName("mainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1000, 760));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
