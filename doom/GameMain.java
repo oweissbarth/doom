@@ -2,7 +2,6 @@ package doom;
 
 import java.awt.GraphicsEnvironment;
 import java.util.Arrays;
-import javax.swing.JApplet;
 
 /*-----------------------------------------------------*/
 //Achsenbelegung!
@@ -10,7 +9,7 @@ import javax.swing.JApplet;
 // y = Spalten von links nach rechts
 /*-----------------------------------------------------*/
 
-public class GameMain extends JApplet {
+public class GameMain {
 
 	private static World world;
         private static Gui mainWindow;
