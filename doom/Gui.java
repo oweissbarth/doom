@@ -431,6 +431,7 @@ public class Gui extends javax.swing.JFrame {
         javax.swing.JLabel[] inventoryobj = {inventOne, inventTwo, inventThree, inventFour, inventFive, inventSix, inventSeven, inventEight};
         return inventoryobj;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Credits;
     private javax.swing.JLabel eventLabel;

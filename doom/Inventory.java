@@ -54,10 +54,19 @@ class Inventory {
 
     
     //Sets up all the Icons for items in the inventory
-    private void setInventoryIcons(Gui mainWindow){
+    public void setInventoryIcons(Gui mainWindow){
       javax.swing.JLabel[] labels = mainWindow.getInventoryLabels();
       for(int i=0; i < labels.length; i++){
            labels[i].setIcon(chooseIcon(inventory[i]));
+           GameTile obj = inventory[i];
+           String description="";
+           if(inventory[i] instanceof WaterTile)
+               description = ((WaterTile) obj).getDescription();
+           if(obj instanceof KeyTile)
+               description =((KeyTile)obj).getDescription();
+           if(obj instanceof WeaponTile)
+               description=((WeaponTile)obj).getDescription();
+           labels[i].setToolTipText(description);
       }
     }
     

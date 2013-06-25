@@ -79,6 +79,10 @@ class WaterTile extends GameTile {
             return this.ID;
     }
     
+    public String getDescription(){
+        return "<html>A bottle of water <br><br>Refills your water.";
+    }
+    
 }
 
 //Wall GameTile
@@ -266,7 +270,19 @@ class KeyTile extends GameTile {
         public int getID() {
             return this.ID;
         }
-}
+        
+        public String getDescription(){
+            String colour="";
+            switch(this.colorIndex){
+                case 'b': colour = "blue"; break;
+                case 'r': colour = "red"; break;
+                case 'y': colour = "yellow"; break;
+                case 'g': colour = "green"; break;
+            }
+            return "<html>A " + colour + "  key. <br><br>Use it to open every " + colour + " door.";
+            }
+        }
+
 
 //Wormehole GameTile
 class PortalTile extends GameTile {
@@ -352,14 +368,6 @@ class WeaponTile extends GameTile{
                         this.state=100;
                         break;
         }
-        
-            
-        
-        
-        
-        
-       
-            
     }
 
     @Override
@@ -394,6 +402,10 @@ class WeaponTile extends GameTile{
     
     public int getWeaponIdentifier(){
         return this.weaponIdentifier;
+    }
+    
+    public String getDescription(){
+        return "<html>"+name +"<br>Damage: "+ damage +  " <br>CritChance: "+ critChance + "%<br>Critical Damage: " + damage*critDamageFactor + "<br>state: " +state+ "%";
     }
     
     public void setWeaponName(String newName){

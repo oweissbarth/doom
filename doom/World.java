@@ -145,6 +145,7 @@ class World {
                             if(((WeaponTile)item).getWeaponState() <= 0){
                                 inventory.deleteItem(index, mainWindow);
                             }
+                            inventory.setInventoryIcons(mainWindow);
                             break;
                             
             }   
